@@ -150,7 +150,7 @@ label {
 input {
   background-color: rgba(233, 233, 233, 0.922);
   color: black;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   outline: black;
 }
 
@@ -199,4 +199,231 @@ input:active {
   flex-direction: row;
   min-width: 100vw;
   min-height: 100vh;
+}
+
+/* Buttons */
+.btn {
+  background: black;
+  color: rgba(246, 242, 83, 1);
+  border: rgba(246, 242, 83, 1) 1px solid;
+  font-size: 1.2em;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  margin-right: 1rem;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+  color: black;
+  background: rgba(246, 242, 83, 1);
+  border: black 2px solid;
+  font-size: 1.2em;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+/** Forms **/
+
+span.error {
+  display: flex;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font-size: 14px;
+  position: absolute;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  top: -35px;
+  right: -15px;
+  z-index: 2;
+  height: auto;
+  padding: 5px;
+  line-height: 1;
+  background-color: #e34f4f;
+  color: #fff;
+  font-weight: normal;
+  display: inline-block;
+  padding: 6px 8px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+span.error:after {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  border-width: 0 6px 6px 0;
+  border-color: transparent #e34f4f;
+  display: block;
+  width: 0;
+  z-index: 1;
+  bottom: -6px;
+  left: 20%;
+}
+
+.red-outline {
+  border-color: #e34f4f;
+}
+
+.blue-outline {
+  border: 2px solid #48a7ff !important;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1rem;
+  min-width: 100%;
+  font-size: 1.5rem;
+}
+
+.form-sub-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.form-control {
+  display: block;
+  border: 1px solid #03131f;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  padding-left: 19px;
+  padding: 1.2rem 0.75rem;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-radius: 0.25rem;
+  width: 20rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  min-width: 100%;
+  min-height: 100%;
+  margin-top: 0;
+}
+
+
+.login-buttons {
+  align-items: flex-start;
+  margin-top: 0.5rem;
+}
+
+.password-input {
+  padding-right: 40px;
+  height: 100%;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+.eye-icon {
+  position: absolute;
+  right: 5px;
+  top: 80%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  background: none;
+  color: black;
+  border: none;
+  width: 3rem;
+  height: 3rem;
+}
+
+/** Containers for modals **/
+.modal-container {
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 0.3rem;
+  outline: 0;
+  border: none;
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+  width: 50rem;
+  padding: 2rem;
+}
+
+.modal-title {
+  margin: 0 0 20px 0;
+  padding: 0;
+  font-weight: 500;
+  font-size: 1.125rem;
+}
+
+.modal-text {
+  margin: 5rem;
+  padding: 0;
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+
+.cancel-btn {
+  margin-left: 2rem;
+}
+
+.forgot-password-btn {
+  padding: 5px;
+  font-size: 1rem;
+}
+
+.info-section-container {
+  background-color: #FFFFFF;
+  min-width: 100%;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+
+.info-section-item {
+  background-color: #FFFFFF;
+  padding: 0.3rem;
+  min-width: 100%;
+}
+
+.info-section-title {
+  padding-left: 2rem;
+}
+
+.margin-top {
+  margin-top: 1rem;
+}
+
+.yellow {
+  color: rgba(246, 242, 83, 1);
+  font-weight: bolder;
 }

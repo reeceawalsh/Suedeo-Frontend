@@ -5,14 +5,19 @@ const TextInput = (props) => {
             <span className={`error ${!props.error ? "hidden" : ""}`}>
                 {props.error}
             </span>
-            <input
-                type="text"
-                name={props.name}
-                value={props.value || ""}
-                className={`form-control ${props.error ? "red-outline" : ""}`}
-                placeholder={props.placeholder}
-                onChange={props.onChange}
-            />
+            <div className="form-sub-group">
+                <label>{props.label}:</label>
+                <input
+                    type="text"
+                    name={props.name}
+                    value={props.value || ""}
+                    className={`form-control ${
+                        props.error ? "red-outline" : ""
+                    }`}
+                    placeholder={props.placeholder}
+                    onChange={props.onChange}
+                />
+            </div>
         </div>
     );
 };

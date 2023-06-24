@@ -93,12 +93,8 @@ const LoginContainer = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.header}>
-                <Link className={styles.skip} href="/home">
-                    Continue as guest
-                </Link>
-            </div>
-            <div className="sub-container">
+            <div className={styles.header}></div>
+            <div className={styles.subContainer}>
                 <LoginForm
                     styles={styles}
                     setLoginData={setLoginData}

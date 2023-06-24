@@ -24,6 +24,7 @@ const PasswordInput = (props) => {
                     {props.error}
                 </span>
                 <div className="form-sub-group">
+                    <label>{props.label}:</label>
                     <input
                         type={showPassword ? "text" : "password"}
                         name={props.name}

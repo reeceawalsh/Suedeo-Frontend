@@ -1,5 +1,6 @@
 import PasswordInput from "../FormElements/PasswordInput";
 import TextInput from "../FormElements/TextInput";
+import Link from "next/link";
 
 // login form used by the login component
 export default function LoginForm({
@@ -15,9 +16,13 @@ export default function LoginForm({
     return (
         <div onSubmit={handleLogin} className={styles.loginForm}>
             <form data-testid="login-form">
+                <Link className={`${styles.skip} yellow`} href="/home">
+                    Continue as guest
+                </Link>
                 <TextInput
                     className={styles.email}
                     name="Identifier"
+                    label="Email"
                     placeholder="Input your email or username."
                     value={loginData.identifier}
                     error={errors.identifier}
@@ -30,6 +35,7 @@ export default function LoginForm({
                 />
                 <PasswordInput
                     className={styles.password}
+                    label="Password"
                     name="Password"
                     placeholder="Input your password"
                     value={loginData.password}
@@ -52,29 +58,33 @@ export default function LoginForm({
                 )}
 
                 <div className={styles.buttons}>
-                    <button
-                        className={styles.button}
-                        type="submit"
-                        onClick={handleLogin}
-                        disabled={!loginData.identifier || !loginData.password}
-                        data-testid="login-button"
-                    >
-                        Login
-                    </button>
-                    <button
-                        className={styles.button}
-                        onClick={handleRegister}
-                        data-testid="register-button"
-                    >
-                        Register
-                    </button>
-                    <button
-                        className={styles.button}
-                        onClick={handleForgotPassword}
-                        data-testid="forgot-password-button"
-                    >
-                        Forgot Password
-                    </button>
+                    <div className="btns">
+                        <button
+                            className="btn"
+                            type="submit"
+                            onClick={handleLogin}
+                            disabled={
+                                !loginData.identifier || !loginData.password
+                            }
+                            data-testid="login-button"
+                        >
+                            Login
+                        </button>
+                        <button
+                            className="btn"
+                            onClick={handleRegister}
+                            data-testid="register-button"
+                        >
+                            Sign Up
+                        </button>
+                        <button
+                            className="btn"
+                            onClick={handleForgotPassword}
+                            data-testid="forgot-password-button"
+                        >
+                            Forgot Password
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>

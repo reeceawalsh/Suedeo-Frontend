@@ -29,17 +29,15 @@ export default function LandingPage() {
                         <span className={styles.yellow}>sign up for free</span>{" "}
                         today!
                     </h3>
-                    <div className={styles.btns}>
+                    <div className="btns">
                         <Link href="/signup">
-                            <button className={styles.btn}>Sign up!</button>
+                            <button className="btn">Sign up!</button>
                         </Link>
                         <Link href="/login">
-                            <button className={styles.btn}>Login</button>
+                            <button className="btn">Login</button>
                         </Link>
                         <Link href="/home">
-                            <button className={styles.btn}>
-                                Continue as Guest
-                            </button>
+                            <button className="btn">Continue as Guest</button>
                         </Link>
                     </div>
                 </div>
