@@ -1,3 +1,4 @@
-export default function LandingPage() {
-    // will automatically take the user to /home
+import LandingPage from "@component/components/LandingPage";
+export default function MainPage() {
+    return <LandingPage />;
 }

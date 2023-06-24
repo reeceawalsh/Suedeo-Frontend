@@ -1,11 +1,13 @@
 @import '~font-awesome/css/font-awesome.min.css';
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-
-* {
-  box-sizing: border-box;
+*,
+*::after,
+*::before {
   padding: 0;
   margin: 0;
-  font-family: sans-serif, Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
 }
 
 html,
@@ -15,11 +17,14 @@ body {
   margin: 0;
 }
 
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(to bottom,
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  font-family: 'Montserrat', sans-serif;
+  background-color: rgb(243 244 246);
   overflow-x: hidden;
 }
 
@@ -28,11 +33,35 @@ a {
   text-decoration: none;
 }
 
+h2 {
+  font-size: 2rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+label {
+  display: block;
+}
+
+.text-input-field-container {
+  >* {
+    margin-bottom: 0.6rem;
+  }
+}
+
+.text-input {
+  border-radius: 0.4rem;
+  padding: 0.7rem 0.5rem;
+  background-color: rgb(243 244 246);
+  width: 100%;
+  border: none;
+}
+
 /* Global Css Styles */
 .container {
   display: flex;
-  padding-top: 2rem;
-  padding-bottom: 1rem;
   font-size: 1.5rem;
   min-height: 100vh;
   display: flex;
@@ -41,10 +70,17 @@ a {
   align-items: center;
 }
 
+.sub-container {
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+
 /* Links */
 .link {
   font-size: 2rem;
-  border: 2px solid black;
   margin-top: 2rem;
   padding: 1rem;
   border-radius: 5px;
@@ -106,4 +142,46 @@ input {
 input:focus,
 input:active {
   border: 1px black solid;
+}
+
+.thumb-up {
+  margin-left: 140px;
+}
+
+.thumbUp,
+.thumbDown {
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.liked {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  color: rgba(246, 242, 83, 1);
+}
+
+.disliked {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  color: red;
+}
+
+.thumb-up:hover {
+  cursor: pointer;
+  color: rgba(246, 242, 83, 1);
+}
+
+.thumb-down:hover {
+  cursor: pointer;
+  color: red;
+}
+
+/* Login Page */
+.loginPage {
+  display: flex;
+  flex-direction: row;
+  min-width: 100vw;
+  min-height: 100vh;
 }

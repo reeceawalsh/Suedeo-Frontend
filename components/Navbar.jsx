@@ -1,9 +1,7 @@
 import SettingsIcon from "@mui/icons-material/Settings";
-import SearchIcon from "@mui/icons-material/Search";
-import { IconButton, InputAdornment, TextField } from "@mui/material";
 import styles from "./styles/navbar.module.css";
 import Image from "next/image";
-import { useUser } from "../util/context/Usercontext";
+import { useUser } from "../util/context/UserContext";
 import Link from "next/link";
 
 const logo = require("../public/RectangleLogo.png");

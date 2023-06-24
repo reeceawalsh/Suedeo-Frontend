@@ -1,0 +1,8 @@
+.title {
+  text-align: left;
+}
+
+.titleContainer {
+  align-self: flex-start;
+  margin-left: 5rem;
+}

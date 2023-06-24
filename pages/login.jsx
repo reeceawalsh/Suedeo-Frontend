@@ -1,9 +1,9 @@
-import Login from "@component/components/Login";
+import LoginContainer from "@component/components/LoginContainer";
 
 export default function LoginPage() {
     return (
-        <div>
-            <Login />
+        <div className="loginPage">
+            <LoginContainer />
         </div>
     );
 }

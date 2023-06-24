@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getUserFromLocalCookie } from "./auth";
 import { useCookies } from "react-cookie";
-
 import useUnsetToken from "../hooks/useUnsetToken";
 import useForceUpdate from "../hooks/useForceUpdate";
 import { useRouter } from "next/router";

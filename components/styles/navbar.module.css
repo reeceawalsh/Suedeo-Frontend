@@ -16,11 +16,16 @@
   border: none;
   cursor: pointer;
   height: 3rem;
+  min-width: 10rem;
   color: black;
-  border: 1px solid black;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  font-size: 1.2rem;
+}
+
+.navBarLink:hover {
+  text-decoration: underline;
 }
 
 .navContainer {
@@ -55,7 +60,8 @@
 .navRight {
   display: flex;
   align-items: center;
-  padding-right: 1rem;
+  padding-right: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .icon {
