@@ -45,7 +45,10 @@ const Navbar = () => {
                         {user ? (
                             user.username
                         ) : (
-                            <Link href="/login">Login</Link>
+                            <div className={styles.right}>
+                                <Link href="/signup">Sign Up</Link>
+                                <Link href="/login">Login</Link>
+                            </div>
                         )}
                     </span>
                     {user && (

@@ -1,4 +1,5 @@
 .navbar {
+  font-family: "Roboto", sans-serif;
   position: relative;
   width: 100%;
   color: rgb(0, 0, 0);
@@ -94,4 +95,10 @@ span {
   flex-direction: column;
   position: absolute;
 
+}
+
+.right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
