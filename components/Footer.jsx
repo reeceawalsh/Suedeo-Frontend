@@ -19,7 +19,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <span className="white-font">Seudeo Movies</span>
+                    <span className="white-font">Suedeo Movies</span>
                 </a>
                 <div className={styles.githubIcon}>
                     <a
