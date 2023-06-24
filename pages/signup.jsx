@@ -1,9 +1,9 @@
-import Register from "@component/components/Register";
+import SignUp from "@component/components/SignUp";
 
 export default function RegisterPage() {
     return (
         <div>
-            <Register />
+            <SignUp />
         </div>
     );
 }

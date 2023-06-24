@@ -26,6 +26,7 @@ export default function LoginForm({
                     placeholder="Input your email or username."
                     value={loginData.identifier}
                     error={errors.identifier}
+                    autoComplete="no"
                     onChange={(event) =>
                         setLoginData({
                             ...loginData,
@@ -40,6 +41,7 @@ export default function LoginForm({
                     placeholder="Input your password"
                     value={loginData.password}
                     error={errors.password}
+                    autoComplete="no"
                     onChange={(event) =>
                         setLoginData({
                             ...loginData,

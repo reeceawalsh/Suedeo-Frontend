@@ -6,7 +6,7 @@ const DateInput = (props) => {
                 <span className={`error ${!props.error ? "hidden" : ""}`}>
                     {props.error}
                 </span>
-
+                <label>{props.label}:</label>
                 <input
                     type="date"
                     name={props.name}

@@ -1,0 +1,25 @@
+/* Sign Up */
+
+.skip {
+  align-self: flex-end;
+}
+
+.skip:hover {
+  text-decoration: underline;
+}
+
+.registrationForm form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.registrationForm form input {
+  margin: 0;
+  height: 3rem;
+  margin-top: 0.2rem;
+}
+
+.header {
+  height: 2rem;
+}

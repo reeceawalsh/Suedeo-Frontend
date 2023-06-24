@@ -24,6 +24,7 @@ export default async function handler(req, res) {
             });
         }
     } else if (req.method === "PUT") {
+        // update user details (an email and a username)
         try {
             const { id, email, username, token } = req.body;
             const response = await axios.put(

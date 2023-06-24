@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 
         try {
             const response = await axios.post(
-                `${process.env.BACKEND_URL}/users`,
+                `${process.env.BACKEND_URL}/auth/local/register`,
                 {
                     email,
                     username,

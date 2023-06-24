@@ -1,7 +1,6 @@
 import { useState } from "react";
 import useSetToken from "@component/util/hooks/useSetToken";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import styles from "./styles/login.module.css";
 import validate from "../validationRules/LoginVR";
 import LoginForm from "./Forms/LoginForm";
@@ -92,9 +91,8 @@ const LoginContainer = () => {
     };
 
     return (
-        <div className={styles.container}>
-            <div className={styles.header}></div>
-            <div className={styles.subContainer}>
+        <div className="formContainer">
+            <div className="formSubContainer">
                 <LoginForm
                     styles={styles}
                     setLoginData={setLoginData}

@@ -1,6 +1,7 @@
 import PasswordInput from "../FormElements/PasswordInput";
 import TextInput from "../FormElements/TextInput";
 import DateInput from "../FormElements/DateInput";
+import Link from "next/link";
 
 // registration form used by the register component
 export default function RegistrationForm({
@@ -12,10 +13,12 @@ export default function RegistrationForm({
     alreadyRegistered,
     validRegistration,
 }) {
-    console.log(errors);
     return (
         <div className={styles.registrationForm} data-testid="register-form">
             <form>
+                <Link className={`${styles.skip} yellow`} href="/home">
+                    Skip
+                </Link>
                 <TextInput
                     className={styles.username}
                     name="Username"
@@ -55,9 +58,9 @@ export default function RegistrationForm({
                         </p>
                     </div>
                 )}
-                <label>Date of Birth</label>
                 <DateInput
                     type="date"
+                    label="Date of Birth"
                     name="Date of Birth"
                     placeholder="Date of Birth (dd/mm/yy)"
                     value={registrationData.dateOfBirth}
@@ -70,10 +73,10 @@ export default function RegistrationForm({
                         })
                     }
                 />
-                <label>Password</label>
                 <PasswordInput
                     className={styles.password}
                     name="Password"
+                    label="Password"
                     placeholder="Password"
                     value={registrationData.password}
                     error={errors.password}
@@ -86,7 +89,7 @@ export default function RegistrationForm({
                     }
                 />
                 <button
-                    className={styles.button}
+                    className="btn"
                     onClick={handleRegister}
                     data-testid="create-account-button"
                 >
