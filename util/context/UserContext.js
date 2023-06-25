@@ -19,19 +19,11 @@ export const UserProvider = ({ children }) => {
     // forces a re-render when required
     const forceUpdate = useForceUpdate();
 
-    // redirect logged-out users to the homepage
-    useEffect(() => {
-        if (user) {
-            router.push("/home");
-        }
-    }, [user, router]);
-
     // fetches the user if there's a jwt token.
     useEffect(() => {
         const fetchUser = async () => {
             const fetchedUser = await getUserFromLocalCookie(cookies);
             setUser(fetchedUser);
-            console.log(user);
             setLoading(false);
         };
         if (cookies.jwt) {

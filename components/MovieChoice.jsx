@@ -1,17 +1,10 @@
 import List from "../../Components/List/List";
-
-const movieLists = [
-    "Netflix",
-    "Disney Plus",
-    "Sky",
-    "Amazon Prime Video",
-    "Now TV",
-];
+import movieList from "@component/lib/data/movieList";
 
 const MovieChoice = () => {
     return (
         <div className="container">
-            {movieLists.map((item) => {
+            {movieList.map((item) => {
                 return (
                     <>
                         {item}

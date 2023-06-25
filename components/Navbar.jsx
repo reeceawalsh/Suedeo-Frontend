@@ -1,14 +1,21 @@
 import SettingsIcon from "@mui/icons-material/Settings";
 import styles from "./styles/navbar.module.css";
 import Image from "next/image";
+import { useState, useEffect, useContext } from "react";
 import { useUser } from "../util/context/UserContext";
 import Link from "next/link";
-
+import { MediaTypeContext } from "@component/util/context/MediaTypeContext";
 const logo = require("../public/RectangleLogo.png");
 const userIcon = require("../public/logo.jpeg");
 
 const Navbar = () => {
-    const { user } = useUser();
+    const { user, logout } = useUser();
+    const { mediaType, toggleMediaType } = useContext(MediaTypeContext);
+    const [dropdownVisible, setDropdownVisible] = useState(false);
+    // handles logging out
+    const handleLogout = () => {
+        logout();
+    };
     return (
         <div className={styles.navbar}>
             <div className={styles.navContainer}>
@@ -22,8 +29,22 @@ const Navbar = () => {
                     <Link href="/home" className={styles.navBarLink}>
                         Home
                     </Link>
-                    <span className={styles.navBarLink}>Series</span>
-                    <span className={styles.navBarLink}>Movies</span>
+                    {mediaType === "movie" ? (
+                        <span
+                            onClick={toggleMediaType}
+                            className={styles.navBarLink}
+                        >
+                            Series
+                        </span>
+                    ) : (
+                        <span
+                            onClick={toggleMediaType}
+                            className={styles.navBarLink}
+                        >
+                            Movies
+                        </span>
+                    )}
+
                     <span className={styles.navBarLink}>Watch List</span>
                 </div>
                 <div className={styles.navRight}>
@@ -41,34 +62,44 @@ const Navbar = () => {
                             ),
                         }}
                     /> */}
-                    <span id={styles.userName}>
-                        {user ? (
-                            user.username
-                        ) : (
+                    <span>
+                        {!user && (
                             <div className={styles.right}>
                                 <Link href="/signup">Sign Up</Link>
                                 <Link href="/login">Login</Link>
                             </div>
                         )}
                     </span>
+                    {/* Dropdown Profile Menu */}
                     {user && (
-                        <>
-                            <SettingsIcon className={styles.icon} />
-
-                            <div className={styles.icon} />
-                            <Image
-                                id="profile-img"
-                                className={styles.profile}
-                                src={userIcon}
-                                alt="Profile Pic"
-                            />
-                            <div className={styles.profile}>
-                                <div className={styles.icon} />
-                                <div className={styles.options}>
-                                    <span>Logout</span>
+                        <div className={styles.right}>
+                            <span className={styles.userName}>
+                                {user.username}
+                            </span>
+                            <div
+                                className={styles.dropdown}
+                                onMouseEnter={() => setDropdownVisible(true)}
+                                onMouseLeave={() => setDropdownVisible(false)}
+                            >
+                                <Image
+                                    id="profile-img"
+                                    className={styles.profile}
+                                    src={userIcon}
+                                    alt="Profile Pic"
+                                />
+                                <div className={styles.profile}>
+                                    <div className={styles.icon} />
+                                    {dropdownVisible && (
+                                        <div className={styles.dropdownContent}>
+                                            <span>Settings</span>
+                                            <span onClick={handleLogout}>
+                                                Logout
+                                            </span>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
-                        </>
+                        </div>
                     )}
                 </div>
             </div>

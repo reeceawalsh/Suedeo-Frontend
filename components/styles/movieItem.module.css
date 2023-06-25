@@ -1,11 +1,12 @@
 .movieItem {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   width: 250px;
   height: 380px;
   margin: 20px;
   overflow: hidden;
   position: relative;
   color: black;
+  cursor: default;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 8px 16px, rgba(0, 0, 0, 0.23) 0px 4px 4px;
 }

@@ -34,20 +34,21 @@ const getBackDropURL = (backdrop_path) => {
 // Checks to see how well rated the movie is out of 10 then translates it into stars.
 const starRating = (vote_average) => {
     const stars = [
-        <StarOutlineIcon className={styles.star} />,
-        <StarOutlineIcon className={styles.star} />,
-        <StarOutlineIcon className={styles.star} />,
-        <StarOutlineIcon className={styles.star} />,
-        <StarOutlineIcon className={styles.star} />,
+        <StarOutlineIcon key={1} className={styles.star} />,
+        <StarOutlineIcon key={2} className={styles.star} />,
+        <StarOutlineIcon key={3} className={styles.star} />,
+        <StarOutlineIcon key={4} className={styles.star} />,
+        <StarOutlineIcon key={5} className={styles.star} />,
     ];
 
     const outOfFive = vote_average / 2;
     const decimalPart = outOfFive.toString().split(".")[1];
+    let i;
     for (let i = 0; i + 0.9 < outOfFive; i++) {
-        stars[i] = <StarIcon className={styles.star} />;
+        stars[i] = <StarIcon key={i} className={styles.star} />;
     }
     if (decimalPart !== 0 && decimalPart >= 5) {
-        stars[outOfFive] = <StarHalfIcon className={styles.star} />;
+        stars[outOfFive] = <StarHalfIcon key={i} className={styles.star} />;
     }
 
     return stars;
@@ -86,7 +87,12 @@ export default function MovieItem({
     return (
         <div
             className={styles.movieItem}
-            style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
+            style={{
+                left:
+                    isHovered && typeof index === "number"
+                        ? index * 225 - 50 + index * 2.5
+                        : "auto",
+            }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >

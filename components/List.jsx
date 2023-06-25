@@ -1,21 +1,23 @@
 import MovieItem from "./MovieItem";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import styles from "./styles/list.module.css";
 import convertProviders from "@component/util/helperFunctions/convertProviders";
+import { MediaTypeContext } from "@component/util/context/MediaTypeContext";
 
 export default function List(props) {
+    const { mediaType } = useContext(MediaTypeContext);
     const [movies, setMovies] = useState([]);
-    const [mediaType, setMediaType] = useState("movie");
     let provider = convertProviders(props.provider);
 
     const changeMediaType = () => {
-        setMediaType((prevState) => {
-            return prevState === "movie" ? "tv" : "movie";
-        });
         changeMedia();
         loadPages();
     };
+
+    useEffect(() => {
+        changeMediaType();
+    }, [mediaType]);
 
     const changeMedia = () => {
         axios
@@ -29,8 +31,6 @@ export default function List(props) {
                 console.log(err);
             });
     };
-
-    let changeTo = mediaType === "movie" ? "Movies" : "Series";
 
     const loadPages = () => {
         for (let i = 2; i < 10; i++) {
@@ -47,10 +47,6 @@ export default function List(props) {
         }
     };
 
-    useEffect(() => {
-        changeMediaType();
-    }, [provider]);
-
     return (
         <div className={styles.list}>
             {/* <button 
@@ -63,7 +59,7 @@ export default function List(props) {
             <div className={styles.wrapper}>
                 <div className={styles.container}>
                     {movies.map((movie, index) => {
-                        return <MovieItem key={index} {...movie} />;
+                        return <MovieItem key={movie.id} {...movie} />;
                     })}
                 </div>
             </div>

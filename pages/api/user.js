@@ -5,6 +5,7 @@ export default async function handler(req, res) {
         // retrieve user info
         try {
             const jwt = req.headers.authorization.split(" ")[1];
+            console.log(jwt);
             console.log("JWT token in API route handler:", jwt);
             const response = await axios.get(
                 `${process.env.BACKEND_URL}/users/me`,

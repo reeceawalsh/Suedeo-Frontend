@@ -17,20 +17,6 @@ body {
   margin: 0;
 }
 
-::-webkit-scrollbar {
-  height: 8px;
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 30px;
-  background: rgb(219, 219, 219);
-}
-
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(to bottom,
@@ -339,7 +325,6 @@ span.error:after {
   min-height: 100%;
   margin-top: 0;
 }
-
 
 .login-buttons {
   align-items: flex-start;

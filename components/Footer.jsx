@@ -9,9 +9,6 @@ const Footer = () => {
         <footer className={styles.footer}>
             <div className={styles.links}>
                 {/* Users can fill out this survey to provide feedback about the application. */}
-                <NavLink className={styles.link} href="/profile">
-                    Profile
-                </NavLink>
             </div>
             <div className={styles.info}>
                 <a
@@ -19,7 +16,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <span className="white-font">Suedeo Movies</span>
+                    <span className="white-font">Reece Walsh</span>
                 </a>
                 <div className={styles.githubIcon}>
                     <a

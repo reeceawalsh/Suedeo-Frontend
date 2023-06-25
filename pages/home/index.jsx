@@ -4,7 +4,7 @@ import movieList from "@component/lib/data/movieList";
 import styles from "./styles/home.module.css";
 
 // route -> /home
-export default function Home() {
+export default function Home({ mediaType, togglemediatype }) {
     return (
         <Layout>
             <div className="container">
@@ -14,7 +14,12 @@ export default function Home() {
                             <div className={styles.titleContainer}>
                                 <h1 className={styles.title}>{item}</h1>
                             </div>
-                            <List key={item} provider={item} />
+                            <List
+                                key={item}
+                                provider={item}
+                                mediaType={mediaType}
+                                togglemediatype={togglemediatype}
+                            />
                         </div>
                     );
                 })}

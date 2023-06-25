@@ -1,5 +1,6 @@
 const setGenre = (genres, genre_ids) => {
     let genre = "";
+    console.log(genres);
     // Get genre
     for (let i = 0; i < genre_ids.length; i++) {
         for (let j = 0; j < genres.length; j++) {
