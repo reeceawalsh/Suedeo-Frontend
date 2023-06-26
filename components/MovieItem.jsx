@@ -8,18 +8,19 @@ import axios from "axios";
 import styles from "./styles/movieItem.module.css";
 import setGenre from "@component/util/helperFunctions/setGenre";
 import sliceDescription from "@component/util/helperFunctions/sliceDescription";
+import addToLiked from "@component/util/helperFunctions/addToLiked";
+import { useUser } from "@component/util/context/UserContext";
+import { useCookies } from "react-cookie";
+import fetchMovieId from "@component/util/helperFunctions/fetchMovieId";
+import genres from "@component/lib/data/genres";
 
-let genres = [];
-axios
-    .get("/api/getGenres")
-    .then((response) => {
-        console.log(response);
-        genres = response.data.genres;
-    })
-    .catch((err) => {
-        console.log(err);
-    });
-// Set the genre of the movie.
+const getLocalMovieData = async () => {
+    if (movie) {
+        const movieData = await fetchMovieId(movie.tmdb_id, movie.title);
+        console.log(movieData);
+        return movieData;
+    }
+};
 
 // Retrieves the correct path for the poster image
 const getPosterURL = (poster_path) => {
@@ -65,14 +66,17 @@ export default function MovieItem({
     overview,
     genre_ids,
     vote_average,
+    first_air_date,
 }) {
     const [isHovered, setIsHovered] = useState(false);
     const [rating, setRating] = useState("Default");
     const [favourite, setFavourite] = useState(false);
+    const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
+    const { user } = useUser();
 
     // Handle likes and dislikes
-    const like = () => {
-        setRating("liked");
+    const handleLike = async () => {
+        await addToLiked(id, user.id, cookies.jwt);
     };
 
     const dislike = () => {
@@ -87,12 +91,12 @@ export default function MovieItem({
     return (
         <div
             className={styles.movieItem}
-            style={{
-                left:
-                    isHovered && typeof index === "number"
-                        ? index * 225 - 50 + index * 2.5
-                        : "auto",
-            }}
+            // style={{
+            //     left:
+            //         isHovered && typeof index === "number"
+            //             ? index * 225 - 50 + index * 2.5
+            //             : "auto",
+            // }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
@@ -132,7 +136,9 @@ export default function MovieItem({
                                         </StarOutlineIcon>
                                     )}
                                 </div>
-                                <p className={styles.year}>{release_date}</p>
+                                <p className={styles.year}>
+                                    {release_date || first_air_date}
+                                </p>
                             </div>
                             {/* <span className={styles.duration}>{duration}</span>
               <span className={styles.rating}>{parentalRating}</span> */}
@@ -158,7 +164,7 @@ export default function MovieItem({
                                         size="small"
                                     />
                                     <ThumbUpIcon
-                                        onClick={like}
+                                        onClick={handleLike}
                                         className={
                                             rating === "liked"
                                                 ? "liked thumb-up"

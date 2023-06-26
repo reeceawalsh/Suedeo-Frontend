@@ -7,7 +7,6 @@ const useUnsetToken = () => {
         removeCookie("username", { path: "/" });
         removeCookie("id", { path: "/" });
         removeCookie("email", { path: "/" });
-        removeCookie("orcidAccount", { path: "/" });
     };
 
     return unsetToken;

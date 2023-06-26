@@ -3,7 +3,6 @@ import axios from "axios";
 export default async function handler(req, res) {
     if (req.method === "POST") {
         const { email, username, password, dateOfBirth } = req.body;
-
         try {
             const response = await axios.post(
                 `${process.env.BACKEND_URL}/auth/local/register`,

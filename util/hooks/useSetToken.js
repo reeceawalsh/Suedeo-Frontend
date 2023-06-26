@@ -9,7 +9,6 @@ const useSetToken = () => {
         setCookie("username", data.user.username, { path: "/" });
         setCookie("id", data.user.id, { path: "/" });
         setCookie("email", data.user.email, { path: "/" });
-        setCookie("orcidAccount", data.user.orcid, { path: "/" });
     };
 
     return setToken;

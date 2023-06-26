@@ -15,6 +15,13 @@ const SignUp = () => {
     const [validRegistration, setValidRegistration] = useState(true);
     const setToken = useSetToken();
 
+    // redirect logged-out users to the homepage
+    useEffect(() => {
+        if (user) {
+            router.push("/home");
+        }
+    }, [user, router]);
+
     // empty registrationData
     const [registrationData, setRegistrationData] = useState({
         username: "",

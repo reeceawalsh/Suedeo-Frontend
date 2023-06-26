@@ -4,6 +4,7 @@ import { useEffect, useState, useContext } from "react";
 import styles from "./styles/list.module.css";
 import convertProviders from "@component/util/helperFunctions/convertProviders";
 import { MediaTypeContext } from "@component/util/context/MediaTypeContext";
+import fetchMovieId from "@component/util/helperFunctions/fetchMovieId";
 
 export default function List(props) {
     const { mediaType } = useContext(MediaTypeContext);
@@ -49,15 +50,9 @@ export default function List(props) {
 
     return (
         <div className={styles.list}>
-            {/* <button 
-        type="button"
-        className="toggleBtn" 
-        onClick={changeMediaType}
-        >
-        {changeTo}
-        </button> */}
             <div className={styles.wrapper}>
                 <div className={styles.container}>
+                    {/* Add the movie to strapi and  */}
                     {movies.map((movie, index) => {
                         return <MovieItem key={movie.id} {...movie} />;
                     })}

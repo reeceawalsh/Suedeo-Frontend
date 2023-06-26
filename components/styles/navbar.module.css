@@ -1,5 +1,5 @@
 .navbar {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
   width: 100%;
   z-index: 100;
   color: rgb(0, 0, 0);
@@ -23,6 +23,7 @@
   align-items: center;
   border-radius: 10px;
   font-size: 1.1rem;
+  font-weight: 400;
 }
 
 .navBarLink:hover {
@@ -106,6 +107,7 @@ span {
 
 .userName {
   margin-top: 1rem;
+  text-align: right;
 }
 
 .dropdown {
