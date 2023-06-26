@@ -16,6 +16,13 @@ export default function List(props) {
         loadPages();
     };
 
+    const getLocalMovieData = async (movie) => {
+        if (movie) {
+            // will fetch the id if it's in strapi and add it to strapi if its not.
+            await fetchMovieId(movie.id, movie.title);
+        }
+    };
+
     useEffect(() => {
         changeMediaType();
     }, [mediaType]);
@@ -47,6 +54,12 @@ export default function List(props) {
                 });
         }
     };
+
+    useEffect(() => {
+        movies.forEach((movie) => {
+            getLocalMovieData(movie);
+        });
+    }, [movies]);
 
     return (
         <div className={styles.list}>

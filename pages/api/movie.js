@@ -3,14 +3,14 @@ import axios from "axios";
 // handles adding a restaurant to the database, takes a yelp id and a name.
 export default async function handler(req, res) {
     if (req.method === "POST") {
-        const { id, title } = req.query;
+        const { tmdb_id, title } = req.query;
 
         try {
             const response = await axios.post(
                 `${process.env.BACKEND_URL}/movies`,
                 {
                     data: {
-                        tmdb_id: id,
+                        tmdb_id,
                         title,
                     },
                 },

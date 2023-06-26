@@ -14,14 +14,6 @@ import { useCookies } from "react-cookie";
 import fetchMovieId from "@component/util/helperFunctions/fetchMovieId";
 import genres from "@component/lib/data/genres";
 
-const getLocalMovieData = async () => {
-    if (movie) {
-        const movieData = await fetchMovieId(movie.tmdb_id, movie.title);
-        console.log(movieData);
-        return movieData;
-    }
-};
-
 // Retrieves the correct path for the poster image
 const getPosterURL = (poster_path) => {
     return `https://www.themoviedb.org/t/p/w440_and_h660_face/${poster_path}`;
