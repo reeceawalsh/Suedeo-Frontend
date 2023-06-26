@@ -5,10 +5,21 @@ import styles from "./styles/list.module.css";
 import convertProviders from "@component/util/helperFunctions/convertProviders";
 import { MediaTypeContext } from "@component/util/context/MediaTypeContext";
 import fetchMovieId from "@component/util/helperFunctions/fetchMovieId";
+import fetchLikedMovies from "@component/util/helperFunctions/fetchLikedMovies";
+import addToDisliked from "@component/util/helperFunctions/addToDisliked";
+import fetchDislikedMovies from "@component/util/helperFunctions/fetchDislikedMovies";
+import addToLiked from "@component/util/helperFunctions/addToLiked";
+import { useCookies } from "react-cookie";
+import { useUser } from "@component/util/context/UserContext";
+import handleRatingChange from "@component/util/helperFunctions/handleRatingChange";
 
 export default function List(props) {
     const { mediaType } = useContext(MediaTypeContext);
+    const [rating, setRating] = useState("Default");
     const [movies, setMovies] = useState([]);
+    const [likedMovies, setLikedMovies] = useState();
+    const [dislikedMovies, setDislikedMovies] = useState([]);
+    const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
     let provider = convertProviders(props.provider);
 
     const changeMediaType = () => {
@@ -16,16 +27,34 @@ export default function List(props) {
         loadPages();
     };
 
-    const getLocalMovieData = async (movie) => {
-        if (movie) {
-            // will fetch the id if it's in strapi and add it to strapi if its not.
-            await fetchMovieId(movie.id, movie.title);
-        }
-    };
+    // const getLocalMovieData = async (movie) => {
+    //     if (movie) {
+    //         // will fetch the id if it's in strapi and add it to strapi if its not.
+    //         await fetchMovieId(movie.id, movie.title);
+    //     }
+    // };
 
     useEffect(() => {
         changeMediaType();
     }, [mediaType]);
+
+    useEffect(() => {
+        const fetchMovies = async () => {
+            try {
+                const likedMoviesList =
+                    (await fetchLikedMovies(cookies.jwt)) || [];
+                const dislikedMoviesList =
+                    (await fetchDislikedMovies(cookies.jwt)) || [];
+                setLikedMovies(likedMoviesList);
+                console.log(likedMoviesList);
+                console.log(dislikedMoviesList);
+                setDislikedMovies(dislikedMoviesList);
+            } catch (error) {
+                console.error("Failed to fetch movies:", error);
+            }
+        };
+        fetchMovies();
+    }, [cookies.jwt]);
 
     const changeMedia = () => {
         axios
@@ -55,19 +84,40 @@ export default function List(props) {
         }
     };
 
-    useEffect(() => {
-        movies.forEach((movie) => {
-            getLocalMovieData(movie);
+    // loads movies into database
+    // useEffect(() => {
+    //     movies.forEach((movie) => {
+    //         getLocalMovieData(movie);
+    //     });
+    // }, [movies]);
+
+    const handleRating = (id) => {
+        let currentRating = "Default";
+        likedMovies?.forEach((movie) => {
+            if (movie.tmdb_id == id) currentRating = "liked";
         });
-    }, [movies]);
+        dislikedMovies?.forEach((movie) => {
+            if (movie.tmdb_id == id) currentRating = "disliked";
+        });
+        return currentRating;
+    };
 
     return (
         <div className={styles.list}>
             <div className={styles.wrapper}>
                 <div className={styles.container}>
-                    {/* Add the movie to strapi and  */}
                     {movies.map((movie, index) => {
-                        return <MovieItem key={movie.id} {...movie} />;
+                        const movieRating = handleRating(movie.id);
+                        return (
+                            <MovieItem
+                                key={movie.id}
+                                {...movie}
+                                likedMovies={likedMovies}
+                                dislikedMovies={dislikedMovies}
+                                rating={movieRating}
+                                setRating={setRating}
+                            />
+                        );
                     })}
                 </div>
             </div>

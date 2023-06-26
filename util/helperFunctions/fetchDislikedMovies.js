@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default async function fetchLikedMovies(jwt) {
+export default async function fetchDislikedMovies(jwt) {
     if (jwt) {
         try {
             const response = await axios.get("/api/user", {
@@ -9,7 +9,7 @@ export default async function fetchLikedMovies(jwt) {
                     Authorization: `Bearer ${jwt}`,
                 },
             });
-            return response.data.liked_movies;
+            return response.data.bad_movies;
         } catch (error) {
             console.error(error.message);
         }

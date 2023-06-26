@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import StarIcon from "@mui/icons-material/Star";
@@ -13,6 +13,10 @@ import { useUser } from "@component/util/context/UserContext";
 import { useCookies } from "react-cookie";
 import fetchMovieId from "@component/util/helperFunctions/fetchMovieId";
 import genres from "@component/lib/data/genres";
+import fetchLikedMovies from "@component/util/helperFunctions/fetchLikedMovies";
+import addToDisliked from "@component/util/helperFunctions/addToDisliked";
+import fetchDislikedMovies from "@component/util/helperFunctions/fetchDislikedMovies";
+import handleRatingChange from "@component/util/helperFunctions/handleRatingChange";
 
 // Retrieves the correct path for the poster image
 const getPosterURL = (poster_path) => {
@@ -59,36 +63,59 @@ export default function MovieItem({
     genre_ids,
     vote_average,
     first_air_date,
+    likedMovies,
+    dislikedMovies,
+    rating,
+    setRating,
 }) {
     const [isHovered, setIsHovered] = useState(false);
-    const [rating, setRating] = useState("Default");
     const [favourite, setFavourite] = useState(false);
-    const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
+    const [liked, setLiked] = useState();
+    const [disliked, setDisliked] = useState();
     const { user } = useUser();
-
-    // Handle likes and dislikes
-    const handleLike = async () => {
-        await addToLiked(id, user.id, cookies.jwt);
-    };
-
-    const dislike = () => {
-        setRating("disliked");
-    };
+    // console.log(likedMovies, "liked movies");
+    // console.log(dislikedMovies, "dislikedMovies");
 
     // Favourites
     const changeFavourite = () => {
         setFavourite(!favourite);
     };
 
+    const toggleRating = (type) => {
+        let prevType;
+        let newRating;
+
+        setRating((prevRating) => {
+            prevType = prevRating;
+            if (prevRating === type) {
+                newRating = "Default";
+            } else {
+                newRating = type;
+            }
+            return newRating;
+        });
+
+        handleRatingChange(
+            id,
+            newRating,
+            prevType,
+            likedMovies,
+            dislikedMovies,
+            user
+        );
+    };
+
+    useEffect(() => {
+        if (likedMovies?.some((movie) => movie.tmdb_id == id)) setLiked(true);
+        else setLiked(false);
+        if (dislikedMovies?.some((movie) => movie.tmdb_id == id))
+            setDisliked(true);
+        else setDisliked(false);
+    }, [likedMovies, dislikedMovies]);
+
     return (
         <div
             className={styles.movieItem}
-            // style={{
-            //     left:
-            //         isHovered && typeof index === "number"
-            //             ? index * 225 - 50 + index * 2.5
-            //             : "auto",
-            // }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
@@ -107,7 +134,7 @@ export default function MovieItem({
                                         {title}
                                         {name}
                                     </h1>
-                                    {favourite && (
+                                    {favourite && user && (
                                         <StarIcon
                                             onClick={changeFavourite}
                                             className={styles.favouriteStar}
@@ -117,7 +144,7 @@ export default function MovieItem({
                                             ></button>
                                         </StarIcon>
                                     )}
-                                    {!favourite && (
+                                    {!favourite && user && (
                                         <StarOutlineIcon
                                             onClick={changeFavourite}
                                             className={styles.favouriteStar}
@@ -145,26 +172,32 @@ export default function MovieItem({
                                         {setGenre(genres, genre_ids)}
                                     </p>
                                 </div>
-                                <div className={styles.rating}>
-                                    <ThumbDownIcon
-                                        onClick={dislike}
-                                        className={
-                                            rating === "disliked"
-                                                ? "disliked thumb-down"
-                                                : "thumb thumb-down"
-                                        }
-                                        size="small"
-                                    />
-                                    <ThumbUpIcon
-                                        onClick={handleLike}
-                                        className={
-                                            rating === "liked"
-                                                ? "liked thumb-up"
-                                                : "thumb thumb-up"
-                                        }
-                                        size="small"
-                                    />
-                                </div>
+                                {user && (
+                                    <div className={styles.rating}>
+                                        <ThumbDownIcon
+                                            onClick={() => {
+                                                toggleRating("disliked");
+                                            }}
+                                            className={
+                                                disliked === true
+                                                    ? "disliked thumb-down"
+                                                    : "thumb thumb-down"
+                                            }
+                                            size="small"
+                                        />
+                                        <ThumbUpIcon
+                                            onClick={() => {
+                                                toggleRating("liked");
+                                            }}
+                                            className={
+                                                liked === true
+                                                    ? "liked thumb-up"
+                                                    : "thumb thumb-up"
+                                            }
+                                            size="small"
+                                        />
+                                    </div>
+                                )}
                                 <div className={styles.movieButtons}>
                                     <button className={styles.moreInfoBtn}>
                                         More Information

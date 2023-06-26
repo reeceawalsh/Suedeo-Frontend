@@ -1,14 +1,14 @@
 import axios from "axios";
 
-export default async function addToLiked(movies, userID) {
+export default async function addToDisliked(movies, userID) {
     if (userID && movies) {
         try {
-            const response = await axios.put("/api/addToLiked", {
+            const response = await axios.put("/api/addToDisliked", {
                 userID,
                 movies,
             });
             if (response.status === 201) {
-                console.log("Added to liked movies", response);
+                console.log("Added to disliked movies", response);
             } else if (response.status === 204) {
                 console.log("Movie not found");
             }

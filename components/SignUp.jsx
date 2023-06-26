@@ -4,6 +4,7 @@ import { useUser } from "@component/util/context/UserContext";
 import styles from "./styles/signup.module.css";
 import validate from "../validationRules/RegistrationVR";
 import RegistrationForm from "./Forms/RegistrationForm";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import registerUser from "@component/util/helperFunctions/registerUser";
@@ -14,6 +15,7 @@ const SignUp = () => {
     const [errors, setErrors] = useState([]);
     const [validRegistration, setValidRegistration] = useState(true);
     const setToken = useSetToken();
+    const router = useRouter();
 
     // redirect logged-out users to the homepage
     useEffect(() => {

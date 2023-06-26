@@ -24,18 +24,15 @@ export default async function handler(req, res) {
 
             res.status(200).json(response.data);
         } catch (error) {
-            console.error("Error in post request for movie.js:", error);
-            console.error("Error response:", error.response);
-            console.error("Error response data:", error.response?.data);
             res.status(500).json({
                 error: "An error occurred whilst adding a movie.",
             });
         }
     } else if (req.method === "GET") {
-        const { id } = req.query;
+        const { tmdb_id } = req.query;
         try {
             const response = await axios.get(
-                `${process.env.BACKEND_URL}/movies?filters[tmdb_id][$eq]=${id}`,
+                `${process.env.BACKEND_URL}/movies?filters[tmdb_id][$eq]=${tmdb_id}`,
                 {
                     headers: {
                         Authorization: `Bearer ${process.env.ADMIN_TOKEN}`,

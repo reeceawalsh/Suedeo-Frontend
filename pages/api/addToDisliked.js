@@ -1,10 +1,11 @@
 import axios from "axios";
 
-async function updatedLikedMovies(userID, movies, retryCount = 0) {
+async function updateDislikedMovies(userID, movies, retryCount = 0) {
     const maxRetries = 3;
     try {
+        // fieldName disliked_movies didn't work on strapi. it kept timing out.
         const data = JSON.stringify({
-            liked_movies: movies,
+            bad_movies: movies,
         });
 
         const response = await axios.put(
@@ -23,7 +24,7 @@ async function updatedLikedMovies(userID, movies, retryCount = 0) {
     } catch (error) {
         if (error.message.includes("Deadlock") && retryCount < maxRetries) {
             console.log("Deadlock detected, retrying...");
-            return updatedLikedMovies(userID, movies, retryCount + 1);
+            return updateDislikedMovies(userID, movies, retryCount + 1);
         } else {
             throw error;
         }
@@ -34,9 +35,9 @@ export default async function handler(req, res) {
     if (req.method === "PUT") {
         const { userID, movies } = req.body;
 
-        console.log("Movies to add to favourites", movies);
+        console.log("Movies to add to disliked", movies);
         try {
-            const response = await updatedLikedMovies(userID, movies);
+            const response = await updateDislikedMovies(userID, movies);
             res.status(201).json(response);
         } catch (error) {
             res.status(500).json({ message: "An error occurred" });
