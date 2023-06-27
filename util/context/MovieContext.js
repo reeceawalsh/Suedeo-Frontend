@@ -79,8 +79,14 @@ export function MovieProvider({ children }) {
         }
     };
 
-    const handleWatchlist = async (id) => {
-        await handleWatchlistToggle(id, watchlist, setWatchlist, user);
+    const handleWatchlist = async (id, mediaType) => {
+        await handleWatchlistToggle(
+            id,
+            watchlist,
+            setWatchlist,
+            user,
+            mediaType
+        );
     };
 
     const value = {

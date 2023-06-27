@@ -1,5 +1,5 @@
 import axios from "axios";
-export default async function fetchMovieId(id, title) {
+export default async function fetchMovieId(id, title, type) {
     let movie;
     let uuid; // this is the local movie id in strapi.
     if (id) {
@@ -12,13 +12,13 @@ export default async function fetchMovieId(id, title) {
             } else {
                 // need to add the movie to the collection
                 const createResponse = await axios.post(
-                    `/api/movie?tmdb_id=${id}&title=${title}`
+                    `/api/movie?tmdb_id=${id}&title=${title}&type=${type}`
                 );
                 movie = createResponse.data.data[0];
                 return movie;
             }
         } catch (error) {
-            console.error("An error occurred:", error.message);
+            // console.error("An error occurred:", error.message);
         }
     } else {
         console.error("Invalid name or id passed to fetch movie id.");

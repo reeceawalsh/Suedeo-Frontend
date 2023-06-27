@@ -7,11 +7,14 @@ import Link from "next/link";
 import { MediaTypeContext } from "@component/util/context/MediaTypeContext";
 const logo = require("../public/RectangleLogo.png");
 const userIcon = require("../public/logo.jpeg");
+import { useRouter } from "next/router";
 
 const Navbar = () => {
     const { user, logout } = useUser();
     const { mediaType, toggleMediaType } = useContext(MediaTypeContext);
     const [dropdownVisible, setDropdownVisible] = useState(false);
+    const router = useRouter();
+    const currentPath = router.pathname;
     // handles logging out
     const handleLogout = () => {
         logout();
@@ -26,26 +29,45 @@ const Navbar = () => {
                         src={logo}
                         alt="Suedeo Logo"
                     />
-                    <Link href="/home" className={styles.navBarLink}>
+                    <Link
+                        href="/home"
+                        className={`${styles.navBarLink} 
+                            ${
+                                router.pathname === "/home"
+                                    ? styles.navBarLinkActive
+                                    : styles.navBarLinkInactive
+                            }`}
+                    >
                         Home
                     </Link>
-                    {mediaType === "movie" ? (
-                        <span
-                            onClick={toggleMediaType}
-                            className={styles.navBarLink}
-                        >
-                            Series
-                        </span>
-                    ) : (
-                        <span
-                            onClick={toggleMediaType}
-                            className={styles.navBarLink}
-                        >
-                            Movies
-                        </span>
-                    )}
+                    {currentPath === "/home" &&
+                        (mediaType === "movie" ? (
+                            <span
+                                onClick={toggleMediaType}
+                                className={styles.navBarLink}
+                            >
+                                Series
+                            </span>
+                        ) : (
+                            <span
+                                onClick={toggleMediaType}
+                                className={styles.navBarLink}
+                            >
+                                Movies
+                            </span>
+                        ))}
 
-                    <span className={styles.navBarLink}>Watch List</span>
+                    <Link
+                        href="/home/watchlist"
+                        className={`${styles.navBarLink} 
+                            ${
+                                router.pathname === "/home/watchlist"
+                                    ? styles.navBarLinkActive
+                                    : styles.navBarLinkInactive
+                            }`}
+                    >
+                        Watch List
+                    </Link>
                 </div>
                 <div className={styles.navRight}>
                     {/* <TextField

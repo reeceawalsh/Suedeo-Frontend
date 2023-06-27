@@ -10,7 +10,7 @@ export default function Home({ mediaType, togglemediatype }) {
             <div className="container">
                 {movieList.map((item, index) => {
                     return (
-                        <div key={index}>
+                        <div className={styles.container} key={index}>
                             <div className={styles.titleContainer}>
                                 <h1 className={styles.title}>{item}</h1>
                             </div>

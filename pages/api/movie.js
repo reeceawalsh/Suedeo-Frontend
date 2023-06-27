@@ -3,7 +3,7 @@ import axios from "axios";
 // handles adding a restaurant to the database, takes a yelp id and a name.
 export default async function handler(req, res) {
     if (req.method === "POST") {
-        const { tmdb_id, title } = req.query;
+        const { tmdb_id, title, type } = req.query;
 
         try {
             const response = await axios.post(
@@ -12,6 +12,7 @@ export default async function handler(req, res) {
                     data: {
                         tmdb_id,
                         title,
+                        type,
                     },
                 },
                 {
@@ -25,7 +26,7 @@ export default async function handler(req, res) {
             res.status(200).json(response.data);
         } catch (error) {
             res.status(500).json({
-                error: "An error occurred whilst adding a movie.",
+                // error: "An error occurred whilst adding a movie.",
             });
         }
     } else if (req.method === "GET") {

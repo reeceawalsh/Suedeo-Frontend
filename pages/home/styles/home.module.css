@@ -4,6 +4,11 @@
 
 .titleContainer {
   align-self: flex-start;
+  justify-self: flex-start;
   margin-left: 5rem;
   margin-top: 1rem;
+}
+
+.container {
+  width: 100%;
 }

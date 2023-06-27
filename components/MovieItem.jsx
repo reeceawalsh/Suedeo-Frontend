@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import StarIcon from "@mui/icons-material/Star";
@@ -9,9 +9,9 @@ import styles from "./styles/movieItem.module.css";
 import setGenre from "@component/util/helperFunctions/setGenre";
 import sliceDescription from "@component/util/helperFunctions/sliceDescription";
 import { useUser } from "@component/util/context/UserContext";
-import genres from "@component/lib/data/genres";
+import genreList from "@component/lib/data/genreList";
 import { useMovies } from "@component/util/context/MovieContext";
-import useForceUpdate from "@component/util/hooks/useForceUpdate";
+import { MediaTypeContext } from "@component/util/context/MediaTypeContext";
 
 // Retrieves the correct path for the poster image
 const getPosterURL = (poster_path) => {
@@ -56,6 +56,7 @@ export default function MovieItem({
     release_date,
     overview,
     genre_ids,
+    genres,
     vote_average,
     first_air_date,
 }) {
@@ -70,10 +71,11 @@ export default function MovieItem({
     const [watch, setWatch] = useState();
     const [liked, setLiked] = useState();
     const [disliked, setDisliked] = useState();
+    const [formattedGenres, setFormattedGenres] = useState();
     const { user } = useUser();
-
+    const { mediaType } = useContext(MediaTypeContext);
     const handleWatchlistClick = async () => {
-        await handleWatchlist(id);
+        await handleWatchlist(id, mediaType);
     };
 
     // handles clicking on thumbs up
@@ -109,6 +111,18 @@ export default function MovieItem({
             setWatch(false);
         }
     }, [likedMovies, dislikedMovies, watchlist]);
+
+    useEffect(() => {
+        // for the shallow data pull in on the home page. Genre names aren't provided so the set
+        if (genre_ids) {
+            setFormattedGenres(setGenre(genreList, genre_ids));
+        }
+        // for watchList when the data is more indepth and genre names are provided in the array.
+        if (genres) {
+            let output = genres.map((item) => item.name).join(", ");
+            setFormattedGenres(output.concat("."));
+        }
+    });
 
     return (
         <div
@@ -170,7 +184,7 @@ export default function MovieItem({
                             <div className={styles.bottomSection}>
                                 <div className={styles.genre}>
                                     <p className={styles.genreText}>
-                                        {setGenre(genres, genre_ids)}
+                                        {formattedGenres}
                                     </p>
                                 </div>
                                 {user && (

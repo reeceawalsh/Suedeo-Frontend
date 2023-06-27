@@ -150,3 +150,11 @@ span {
 .dropdown:hover .dropdownContent {
   display: block;
 }
+
+.navBarLinkActive {
+  font-weight: bold;
+}
+
+.navBarLinkInactive {
+  font-weight: normal;
+}

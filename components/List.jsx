@@ -13,8 +13,6 @@ export default function List(props) {
     const { mediaType } = useContext(MediaTypeContext);
     // const [rating, setRating] = useState("Default");
     const [movies, setMovies] = useState([]);
-    const [likedMovies, setLikedMovies] = useState();
-    const [dislikedMovies, setDislikedMovies] = useState([]);
     const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
     let provider = convertProviders(props.provider);
 
@@ -24,9 +22,11 @@ export default function List(props) {
     };
 
     // const getLocalMovieData = async (movie) => {
+    //     let title = movie.title;
+    //     if (!title) title = movie.name;
     //     if (movie) {
     //         // will fetch the id if it's in strapi and add it to strapi if its not.
-    //         await fetchMovieId(movie.id, movie.title);
+    //         await fetchMovieId(movie.id, title, mediaType);
     //     }
     // };
 
@@ -78,19 +78,15 @@ export default function List(props) {
     //     });
     //     return currentRating;
     // };
-
+    console.log(movies);
     return (
         <div className={styles.list}>
             <div className={styles.wrapper}>
                 <div className={styles.container}>
                     {movies.map((movie, index) => {
+                        console.log(movie);
                         return (
-                            <MovieItem
-                                key={movie.id + "provider"}
-                                {...movie}
-                                likedMovies={likedMovies}
-                                dislikedMovies={dislikedMovies}
-                            />
+                            <MovieItem key={movie.id + "provider"} {...movie} />
                         );
                     })}
                 </div>
