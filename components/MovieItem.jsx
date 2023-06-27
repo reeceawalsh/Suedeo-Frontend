@@ -10,8 +10,8 @@ import setGenre from "@component/util/helperFunctions/setGenre";
 import sliceDescription from "@component/util/helperFunctions/sliceDescription";
 import { useUser } from "@component/util/context/UserContext";
 import genres from "@component/lib/data/genres";
-import handleRatingChange from "@component/util/helperFunctions/handleRatingChange";
 import { useMovies } from "@component/util/context/MovieContext";
+import useForceUpdate from "@component/util/hooks/useForceUpdate";
 
 // Retrieves the correct path for the poster image
 const getPosterURL = (poster_path) => {
@@ -59,46 +59,56 @@ export default function MovieItem({
     vote_average,
     first_air_date,
 }) {
-    const { likedMovies, dislikedMovies, handleRating } = useMovies();
+    const {
+        likedMovies,
+        dislikedMovies,
+        handleRating,
+        handleWatchlist,
+        watchlist,
+    } = useMovies();
     const [isHovered, setIsHovered] = useState(null);
-    const [favourite, setFavourite] = useState(null);
+    const [watch, setWatch] = useState();
     const [liked, setLiked] = useState();
     const [disliked, setDisliked] = useState();
     const { user } = useUser();
 
-    const changeFavourite = () => {
-        setFavourite(true);
+    const handleWatchlistClick = async () => {
+        await handleWatchlist(id);
     };
 
     // handles clicking on thumbs up
     const handleLikedClick = async () => {
         await handleRating(id, true, false);
-        setLiked((prevLiked) => !prevLiked);
-        // need to set disliked to false because a movie cant be liked and disliked at the same time.
-        if (disliked) setDisliked(false);
     };
 
     // handles clicking on thumbs down
     const handleDislikedClick = async () => {
         await handleRating(id, false, true);
-        setDisliked((prevDisliked) => !prevDisliked);
-        // need to set liked to false because a movie cant be liked and disliked at the same time.
-        if (liked) setLiked(false);
     };
 
     // initially checks if the movie should be liked or disliked based on strapi backend, doesn't run again after this as it's taken over by local state.
     useEffect(() => {
         if (likedMovies?.some((movie) => movie.tmdb_id == id)) {
+            // console.log("User like ", title);
             setLiked(true);
+            setDisliked(false);
         } else {
             setLiked(false);
         }
         if (dislikedMovies?.some((movie) => movie.tmdb_id == id)) {
+            // console.log("User dislikes ", title);
             setDisliked(true);
+            setLiked(false);
         } else {
             setDisliked(false);
         }
-    }, []);
+        if (watchlist?.some((movie) => movie.tmdb_id == id)) {
+            // console.log("User has ", title, " on their watch list");
+            setWatch(true);
+        } else {
+            setWatch(false);
+        }
+    }, [likedMovies, dislikedMovies, watchlist]);
 
     return (
         <div
@@ -121,23 +131,27 @@ export default function MovieItem({
                                         {title}
                                         {name}
                                     </h1>
-                                    {favourite && user && (
+                                    {watch && user && (
                                         <StarIcon
-                                            onClick={changeFavourite}
-                                            className={styles.favouriteStar}
+                                            onClick={() =>
+                                                handleWatchlistClick()
+                                            }
+                                            className={styles.watchlistStar}
                                         >
                                             <button
-                                                className={styles.favouriteBtn}
+                                                className={styles.watchlistBtn}
                                             ></button>
                                         </StarIcon>
                                     )}
-                                    {!favourite && user && (
+                                    {!watch && user && (
                                         <StarOutlineIcon
-                                            onClick={changeFavourite}
-                                            className={styles.favouriteStar}
+                                            onClick={() =>
+                                                handleWatchlistClick()
+                                            }
+                                            className={styles.watchlistStar}
                                         >
                                             <button
-                                                className={styles.favouriteBtn}
+                                                className={styles.watchlistBtn}
                                             ></button>
                                         </StarOutlineIcon>
                                     )}

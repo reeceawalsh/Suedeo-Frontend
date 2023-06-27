@@ -4,6 +4,8 @@ import { useUser } from "@component/util/context/UserContext";
 import fetchLikedMovies from "../helperFunctions/fetchLikedMovies";
 import fetchDislikedMovies from "../helperFunctions/fetchDislikedMovies";
 import { useCookies } from "react-cookie";
+import fetchWatchList from "../helperFunctions/fetchWatchList";
+import handleWatchlistToggle from "../helperFunctions/handleWatchlist";
 
 export const MovieContext = createContext();
 
@@ -14,23 +16,28 @@ export const useMovies = () => {
 export function MovieProvider({ children }) {
     const [likedMovies, setLikedMovies] = useState([]);
     const [dislikedMovies, setDislikedMovies] = useState([]);
+    const [watchlist, setWatchlist] = useState([]);
     const { user } = useUser();
     const [cookies, setCookie, removeCookie] = useCookies(["id"]);
 
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const likedMoviesList =
-                    (await fetchLikedMovies(cookies.id)) || [];
-                const dislikedMoviesList =
-                    (await fetchDislikedMovies(cookies.id)) || [];
-                setLikedMovies(likedMoviesList);
-                setDislikedMovies(dislikedMoviesList);
+                const [likedMoviesList, dislikedMoviesList, watchlistList] =
+                    await Promise.all([
+                        fetchLikedMovies(cookies.id),
+                        fetchDislikedMovies(cookies.id),
+                        fetchWatchList(cookies.id),
+                    ]);
+
+                setLikedMovies(likedMoviesList || []);
+                setDislikedMovies(dislikedMoviesList || []);
+                setWatchlist(watchlistList || []);
             } catch (error) {
                 console.error("Failed to fetch movies:", error);
             }
         };
-        console.log(likedMovies);
+
         fetchMovies();
     }, [cookies.jwt]);
 
@@ -47,7 +54,6 @@ export function MovieProvider({ children }) {
             const action = likedMovies.some((m) => m.tmdb_id == id)
                 ? "unlike"
                 : "like";
-            console.log(action);
             await handleRatingChange(
                 id,
                 action,
@@ -71,14 +77,18 @@ export function MovieProvider({ children }) {
                 setDislikedMovies
             );
         }
+    };
 
-        // setLoading(false);
+    const handleWatchlist = async (id) => {
+        await handleWatchlistToggle(id, watchlist, setWatchlist, user);
     };
 
     const value = {
         likedMovies,
         dislikedMovies,
         handleRating,
+        handleWatchlist,
+        watchlist,
     };
 
     return (

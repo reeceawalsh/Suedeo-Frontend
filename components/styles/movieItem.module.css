@@ -107,13 +107,13 @@
   margin-top: 5px;
 }
 
-.favouriteBtn,
+.watchlistBtn,
 .moreInfoBtn {
   cursor: pointer;
   border: none;
 }
 
-.favouriteStar {
+.watchlistStar {
   cursor: pointer;
 }
 
