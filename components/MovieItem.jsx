@@ -12,6 +12,7 @@ import { useUser } from "@component/util/context/UserContext";
 import genreList from "@component/lib/data/genreList";
 import { useMovies } from "@component/util/context/MovieContext";
 import { MediaTypeContext } from "@component/util/context/MediaTypeContext";
+import { useRouter } from "next/router";
 
 // Retrieves the correct path for the poster image
 const getPosterURL = (poster_path) => {
@@ -74,6 +75,8 @@ export default function MovieItem({
     const [formattedGenres, setFormattedGenres] = useState();
     const { user } = useUser();
     const { mediaType } = useContext(MediaTypeContext);
+    const router = useRouter();
+    const [type, setType] = useState();
     const handleWatchlistClick = async () => {
         await handleWatchlist(id, mediaType);
     };
@@ -86,6 +89,13 @@ export default function MovieItem({
     // handles clicking on thumbs down
     const handleDislikedClick = async () => {
         await handleRating(id, false, true);
+    };
+
+    const handleMoreInfoClick = () => {
+        router.push({
+            pathname: `/${id}`,
+            query: { id, type },
+        });
     };
 
     // initially checks if the movie should be liked or disliked based on strapi backend, doesn't run again after this as it's taken over by local state.
@@ -122,6 +132,11 @@ export default function MovieItem({
             let output = genres.map((item) => item.name).join(", ");
             setFormattedGenres(output.concat("."));
         }
+    });
+
+    useEffect(() => {
+        if (name) setType("tv");
+        if (title) setType("movie");
     });
 
     return (
@@ -214,7 +229,10 @@ export default function MovieItem({
                                     </div>
                                 )}
                                 <div className={styles.movieButtons}>
-                                    <button className={styles.moreInfoBtn}>
+                                    <button
+                                        onClick={handleMoreInfoClick}
+                                        className={styles.moreInfoBtn}
+                                    >
                                         More Information
                                     </button>
                                 </div>

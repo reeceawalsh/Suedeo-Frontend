@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2em;
+  background: #1c1c1c;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.poster {
+  position: absolute;
+  top: 5rem;
+}
+
+.container img {
+  width: 30%;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}
+
+.infoSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.infoSection div {
+  width: 30%;
+}
+
+.infoSection h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+.infoSection p {
+  line-height: 1.4;
+  margin-bottom: 0.5em;
+}
+
+.infoSection a {
+  display: inline-block;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  text-decoration: none;
+
+  background: rgba(246, 242, 83, 1) 50%;
+  ;
+  color: #1c1c1c;
+  border-radius: 3px;
+  transition: background 0.3s ease-in-out;
+}
+
+.infoSection a:hover {
+  background: rgba(246, 242, 83, 1) 50%;
+}
+
+.extraInfo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.extraInfo div {
+  width: 30%;
+  margin-bottom: 0.5em;
+}
