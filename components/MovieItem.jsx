@@ -8,15 +8,10 @@ import axios from "axios";
 import styles from "./styles/movieItem.module.css";
 import setGenre from "@component/util/helperFunctions/setGenre";
 import sliceDescription from "@component/util/helperFunctions/sliceDescription";
-import addToLiked from "@component/util/helperFunctions/addToLiked";
 import { useUser } from "@component/util/context/UserContext";
-import { useCookies } from "react-cookie";
-import fetchMovieId from "@component/util/helperFunctions/fetchMovieId";
 import genres from "@component/lib/data/genres";
-import fetchLikedMovies from "@component/util/helperFunctions/fetchLikedMovies";
-import addToDisliked from "@component/util/helperFunctions/addToDisliked";
-import fetchDislikedMovies from "@component/util/helperFunctions/fetchDislikedMovies";
 import handleRatingChange from "@component/util/helperFunctions/handleRatingChange";
+import { useMovies } from "@component/util/context/MovieContext";
 
 // Retrieves the correct path for the poster image
 const getPosterURL = (poster_path) => {
@@ -63,55 +58,47 @@ export default function MovieItem({
     genre_ids,
     vote_average,
     first_air_date,
-    likedMovies,
-    dislikedMovies,
-    rating,
-    setRating,
 }) {
-    const [isHovered, setIsHovered] = useState(false);
-    const [favourite, setFavourite] = useState(false);
+    const { likedMovies, dislikedMovies, handleRating } = useMovies();
+    const [isHovered, setIsHovered] = useState(null);
+    const [favourite, setFavourite] = useState(null);
     const [liked, setLiked] = useState();
     const [disliked, setDisliked] = useState();
     const { user } = useUser();
-    // console.log(likedMovies, "liked movies");
-    // console.log(dislikedMovies, "dislikedMovies");
 
-    // Favourites
     const changeFavourite = () => {
-        setFavourite(!favourite);
+        setFavourite(true);
     };
 
-    const toggleRating = (type) => {
-        let prevType;
-        let newRating;
-
-        setRating((prevRating) => {
-            prevType = prevRating;
-            if (prevRating === type) {
-                newRating = "Default";
-            } else {
-                newRating = type;
-            }
-            return newRating;
-        });
-
-        handleRatingChange(
-            id,
-            newRating,
-            prevType,
-            likedMovies,
-            dislikedMovies,
-            user
-        );
+    // handles clicking on thumbs up
+    const handleLikedClick = async () => {
+        await handleRating(id, true, false);
+        setLiked((prevLiked) => !prevLiked);
+        // need to set disliked to false because a movie cant be liked and disliked at the same time.
+        if (disliked) setDisliked(false);
     };
 
+    // handles clicking on thumbs down
+    const handleDislikedClick = async () => {
+        await handleRating(id, false, true);
+        setDisliked((prevDisliked) => !prevDisliked);
+        // need to set liked to false because a movie cant be liked and disliked at the same time.
+        if (liked) setLiked(false);
+    };
+
+    // initially checks if the movie should be liked or disliked based on strapi backend, doesn't run again after this as it's taken over by local state.
     useEffect(() => {
-        if (likedMovies?.some((movie) => movie.tmdb_id == id)) setLiked(true);
-        else setLiked(false);
-        if (dislikedMovies?.some((movie) => movie.tmdb_id == id))
+        if (likedMovies?.some((movie) => movie.tmdb_id == id)) {
+            setLiked(true);
+        } else {
+            setLiked(false);
+        }
+        if (dislikedMovies?.some((movie) => movie.tmdb_id == id)) {
             setDisliked(true);
-        else setDisliked(false);
-    }, [likedMovies, dislikedMovies]);
+        } else {
+            setDisliked(false);
+        }
+    }, []);
 
     return (
         <div
@@ -176,10 +163,10 @@ export default function MovieItem({
                                     <div className={styles.rating}>
                                         <ThumbDownIcon
                                             onClick={() => {
-                                                toggleRating("disliked");
+                                                handleDislikedClick();
                                             }}
                                             className={
-                                                disliked === true
+                                                disliked == true
                                                     ? "disliked thumb-down"
                                                     : "thumb thumb-down"
                                             }
@@ -187,10 +174,10 @@ export default function MovieItem({
                                         />
                                         <ThumbUpIcon
                                             onClick={() => {
-                                                toggleRating("liked");
+                                                handleLikedClick();
                                             }}
                                             className={
-                                                liked === true
+                                                liked == true
                                                     ? "liked thumb-up"
                                                     : "thumb thumb-up"
                                             }

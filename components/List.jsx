@@ -4,18 +4,14 @@ import { useEffect, useState, useContext } from "react";
 import styles from "./styles/list.module.css";
 import convertProviders from "@component/util/helperFunctions/convertProviders";
 import { MediaTypeContext } from "@component/util/context/MediaTypeContext";
-import fetchMovieId from "@component/util/helperFunctions/fetchMovieId";
 import fetchLikedMovies from "@component/util/helperFunctions/fetchLikedMovies";
-import addToDisliked from "@component/util/helperFunctions/addToDisliked";
 import fetchDislikedMovies from "@component/util/helperFunctions/fetchDislikedMovies";
-import addToLiked from "@component/util/helperFunctions/addToLiked";
+import fetchMovieId from "@component/util/helperFunctions/fetchMovieId";
 import { useCookies } from "react-cookie";
-import { useUser } from "@component/util/context/UserContext";
-import handleRatingChange from "@component/util/helperFunctions/handleRatingChange";
 
 export default function List(props) {
     const { mediaType } = useContext(MediaTypeContext);
-    const [rating, setRating] = useState("Default");
+    // const [rating, setRating] = useState("Default");
     const [movies, setMovies] = useState([]);
     const [likedMovies, setLikedMovies] = useState();
     const [dislikedMovies, setDislikedMovies] = useState([]);
@@ -37,24 +33,6 @@ export default function List(props) {
     useEffect(() => {
         changeMediaType();
     }, [mediaType]);
-
-    useEffect(() => {
-        const fetchMovies = async () => {
-            try {
-                const likedMoviesList =
-                    (await fetchLikedMovies(cookies.jwt)) || [];
-                const dislikedMoviesList =
-                    (await fetchDislikedMovies(cookies.jwt)) || [];
-                setLikedMovies(likedMoviesList);
-                console.log(likedMoviesList);
-                console.log(dislikedMoviesList);
-                setDislikedMovies(dislikedMoviesList);
-            } catch (error) {
-                console.error("Failed to fetch movies:", error);
-            }
-        };
-        fetchMovies();
-    }, [cookies.jwt]);
 
     const changeMedia = () => {
         axios
@@ -84,38 +62,34 @@ export default function List(props) {
         }
     };
 
-    // loads movies into database
     // useEffect(() => {
     //     movies.forEach((movie) => {
     //         getLocalMovieData(movie);
     //     });
     // }, [movies]);
 
-    const handleRating = (id) => {
-        let currentRating = "Default";
-        likedMovies?.forEach((movie) => {
-            if (movie.tmdb_id == id) currentRating = "liked";
-        });
-        dislikedMovies?.forEach((movie) => {
-            if (movie.tmdb_id == id) currentRating = "disliked";
-        });
-        return currentRating;
-    };
+    // const handleRating = (id) => {
+    //     let currentRating = "Default";
+    //     likedMovies?.forEach((movie) => {
+    //         if (movie.tmdb_id == id) currentRating = "liked";
+    //     });
+    //     dislikedMovies?.forEach((movie) => {
+    //         if (movie.tmdb_id == id) currentRating = "disliked";
+    //     });
+    //     return currentRating;
+    // };
 
     return (
         <div className={styles.list}>
             <div className={styles.wrapper}>
                 <div className={styles.container}>
                     {movies.map((movie, index) => {
-                        const movieRating = handleRating(movie.id);
                         return (
                             <MovieItem
-                                key={movie.id}
+                                key={movie.id + "provider"}
                                 {...movie}
                                 likedMovies={likedMovies}
                                 dislikedMovies={dislikedMovies}
-                                rating={movieRating}
-                                setRating={setRating}
                             />
                         );
                     })}
