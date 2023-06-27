@@ -15,12 +15,8 @@ const handleRatingChange = async (
     const movie = { id: await fetchMovieId(movieId), tmdb_id: movieId };
 
     // Checks if movie is already in likedMovies or dislikedMovies
-    const isLiked = likedMovies.some((m) => m.tmdb_id === movie.tmdb_id);
-    const isDisliked = dislikedMovies.some((m) => m.tmdb_id === movie.tmdb_id);
-    console.log(dislikedMovies);
-    console.log(movie.tmdb_id);
-    console.log(isDisliked);
-    console.log(action);
+    const isLiked = likedMovies.some((m) => m.id === movie.id);
+    const isDisliked = dislikedMovies.some((m) => m.id === movie.id);
     let newLikedMovies = [...likedMovies];
     let newDislikedMovies = [...dislikedMovies];
 
