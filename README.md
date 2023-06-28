@@ -1,6 +1,6 @@
 <img align="left" width="auto" height="120" src="public/logo.jpeg" />
 
-# Suedeo Movies [Suedeo Movies](https://suedeo-movies-cn0muxxjz-reeceawalsh.vercel.app/home)
+# [Suedeo Movies](https://suedeo-movies-cn0muxxjz-reeceawalsh.vercel.app/home)
 
 This website intends to solve the problem with browsing streaming providers. This website provides the latest and best movies and series from the most popular streaming providers (more to come). The aim was to be able to pick a movie, or see what offerings a streaming platform have, before subscribing with them. 
 
