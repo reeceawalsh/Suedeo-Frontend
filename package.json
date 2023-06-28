@@ -37,7 +37,7 @@
         "web-vitals": "^2.1.4"
     },
     "engines": {
-        "node": ">=12.x.x <=16.x.x",
+        "node": "18.x",
         "npm": ">=6.0.0"
     },
     "cacheDirectories": [
