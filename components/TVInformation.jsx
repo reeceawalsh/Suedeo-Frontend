@@ -102,6 +102,9 @@ const TVInformation = ({ data, type }) => {
                         src={`https://image.tmdb.org/t/p/original/${poster_path}`}
                         alt={name}
                     />
+                    <div className={styles.rating}>
+                        {StarRating(vote_average)}
+                    </div>
                     {user && (
                         <div className={styles.userInteractions}>
                             <div className={styles.thumbdown}>
@@ -161,10 +164,6 @@ const TVInformation = ({ data, type }) => {
 
                 <div className={styles.extraInfo}>
                     <div className={styles.rightInfo}>
-                        <div className={styles.rating}>
-                            {StarRating(vote_average)}
-                        </div>
-
                         <p>
                             <strong>First aired:</strong> {first_air_date}
                         </p>

@@ -83,7 +83,7 @@
   width: 100%;
   margin-bottom: 8rem;
   font-size: 1.1em;
-  margin-top: 20%;
+  margin-top: 15%;
 }
 
 .extraInfo div {
@@ -118,6 +118,9 @@
 .rating {
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin-top: -3rem;
+  margin-bottom: 1.5rem;
 }
 
 .watchlistStarFull {
@@ -138,7 +141,7 @@
   display: flex;
   justify-content: center;
   justify-self: center;
-  margin: -4em 2em 0 2em;
+  margin: -3em 2em 0 2em;
   cursor: pointer;
 }
 

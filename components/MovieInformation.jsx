@@ -115,6 +115,7 @@ const MovieInformation = ({ data, type }) => {
                     src={`https://image.tmdb.org/t/p/original/${poster_path}`}
                     alt={title}
                 />
+                <div className={styles.rating}>{StarRating(vote_average)}</div>
                 {user && (
                     <div className={styles.userInteractions}>
                         <div className={styles.thumbdown}>
@@ -172,11 +173,6 @@ const MovieInformation = ({ data, type }) => {
 
             <div className={styles.extraInfo}>
                 <div className={styles.rightInfo}>
-                    <div className={styles.rating}>
-                        {" "}
-                        {StarRating(vote_average)}
-                    </div>
-
                     <p>
                         <strong>Release Date:</strong> {release_date}
                     </p>
