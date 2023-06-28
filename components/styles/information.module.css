@@ -1,12 +1,16 @@
 .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   padding: 2em;
   background: #1c1c1c;
   color: #fff;
   min-height: 100vh;
+}
+
+.subContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 4em;
 }
+
 
 .poster {
   border: solid 2px rgba(246, 242, 83, 1);
@@ -17,7 +21,7 @@
   border: solid 2px rgba(246, 242, 83, 1);
 }
 
-.container img {
+.subContainer img {
   width: 100%;
   object-fit: contain;
   border-radius: 10px;
@@ -76,7 +80,7 @@
   width: 100%;
   margin-bottom: 8rem;
   font-size: 1.1em;
-  margin-top: 30%;
+  margin-top: 20%;
 }
 
 .extraInfo div {
@@ -139,4 +143,16 @@
   font-weight: 400;
   font-style: italic;
   text-align: center;
+}
+
+.seasons h2 {
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 2rem;
+}
+
+.seasons {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10% 0 10%;
 }

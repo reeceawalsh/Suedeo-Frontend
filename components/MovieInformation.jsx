@@ -77,7 +77,7 @@ const MovieInformation = ({ data, type }) => {
     }, [likedMovies, dislikedMovies, watchlist]);
 
     return (
-        <div className={styles.container}>
+        <div className={styles.subContainer}>
             <div className={styles.infoSection}>
                 <div>
                     <h1>{title}</h1>
