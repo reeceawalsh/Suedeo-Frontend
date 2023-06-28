@@ -1,21 +1,24 @@
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   padding: 2em;
   background: #1c1c1c;
   color: #fff;
   min-height: 100vh;
+  gap: 4em;
 }
 
 .poster {
-  position: absolute;
-  top: 5rem;
+  border: solid 2px rgba(246, 242, 83, 1);
+  /* box-shadow: 3px 3px 1px rgba(246, 242, 83, 1); */
+}
+
+.backdrop {
+  border: solid 2px rgba(246, 242, 83, 1);
 }
 
 .container img {
-  width: 30%;
+  width: 100%;
   object-fit: contain;
   border-radius: 10px;
   margin-bottom: 1em;
@@ -27,48 +30,56 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-bottom: 1em;
+  margin-bottom: 5em;
 }
 
 .infoSection div {
-  width: 30%;
+  width: 100%;
 }
 
 .infoSection h1 {
-  font-size: 2em;
+  font-size: 3em;
   margin-bottom: 0.5em;
 }
 
 .infoSection p {
-  line-height: 1.4;
+  line-height: 1.8;
+  font-size: 1.2em;
   margin-bottom: 0.5em;
 }
 
-.infoSection a {
+.btn {
   display: inline-block;
   padding: 0.5em 1em;
-  font-size: 1em;
+  font-size: 1.2em;
   text-decoration: none;
 
-  background: rgba(246, 242, 83, 1) 50%;
-  ;
-  color: #1c1c1c;
+  border: 1px solid rgba(246, 242, 83, 1);
+  color: rgba(246, 242, 83, 1);
+  background: #1c1c1c;
   border-radius: 3px;
-  transition: background 0.3s ease-in-out;
+  transition: background 0.6s ease-in-out;
+  margin-top: 1em;
+  margin-right: 1em;
 }
 
-.infoSection a:hover {
-  background: rgba(246, 242, 83, 1) 50%;
+.btn:hover {
+  border: 1px solid rgba(246, 242, 83, 1);
+  color: #1c1c1c;
+  background: rgba(246, 242, 83, 0.8);
 }
 
 .extraInfo {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 10rem;
+  font-size: 1.1em;
+  margin-top: 30%;
 }
 
 .extraInfo div {
-  width: 30%;
   margin-bottom: 0.5em;
+  line-height: 2em;
 }
