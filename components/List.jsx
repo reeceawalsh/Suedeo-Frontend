@@ -4,9 +4,6 @@ import { useEffect, useState, useContext } from "react";
 import styles from "./styles/list.module.css";
 import convertProviders from "@component/util/helperFunctions/convertProviders";
 import { MediaTypeContext } from "@component/util/context/MediaTypeContext";
-import fetchLikedMovies from "@component/util/helperFunctions/fetchLikedMovies";
-import fetchDislikedMovies from "@component/util/helperFunctions/fetchDislikedMovies";
-import fetchMovieId from "@component/util/helperFunctions/fetchMovieId";
 import { useCookies } from "react-cookie";
 
 export default function List(props) {
@@ -25,7 +22,7 @@ export default function List(props) {
     //     let title = movie.title;
     //     if (!title) title = movie.name;
     //     if (movie) {
-    //         // will fetch the id if it's in strapi and add it to strapi if its not.
+    //         // will fetch the id if it's in the db and add it to the db if its not.
     //         await fetchMovieId(movie.id, title, mediaType);
     //     }
     // };
@@ -37,7 +34,7 @@ export default function List(props) {
     const changeMedia = () => {
         axios
             .get(
-                `https://api.themoviedb.org/3/discover/${mediaType}?api_key=dbe4608d19182e24de51d5d4e342e8df&language=en-US&region=GB&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_providers=${provider}&watch_region=GB&with_watch_monetization_types=flatrate`
+                `/api/fetchMovies?mediaType=${mediaType}&provider=${provider}&page=1`
             )
             .then((response) => {
                 setMovies([...response.data.results]);
@@ -51,7 +48,7 @@ export default function List(props) {
         for (let i = 2; i < 10; i++) {
             axios
                 .get(
-                    `https://api.themoviedb.org/3/discover/${mediaType}?api_key=dbe4608d19182e24de51d5d4e342e8df&language=en-US&region=GB&sort_by=popularity.desc&include_adult=false&include_video=false&page=${i}&with_watch_providers=${provider}&watch_region=GB&with_watch_monetization_types=flatrate`
+                    `/api/fetchMovies?mediaType=${mediaType}&provider=${provider}&page=${i}`
                 )
                 .then((response) => {
                     setMovies((prev) => [...prev, ...response.data.results]);
@@ -78,13 +75,12 @@ export default function List(props) {
     //     });
     //     return currentRating;
     // };
-    console.log(movies);
+
     return (
         <div className={styles.list}>
             <div className={styles.wrapper}>
                 <div className={styles.container}>
                     {movies.map((movie, index) => {
-                        console.log(movie);
                         return (
                             <MovieItem key={movie.id + "provider"} {...movie} />
                         );
