@@ -9,6 +9,7 @@ import StarHalfIcon from "@mui/icons-material/StarHalf";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import { useUser } from "@component/util/context/UserContext";
 import StarRating from "./StarRating";
+import Image from "next/image";
 
 const MovieInformation = ({ data, type }) => {
     const {
@@ -109,7 +110,7 @@ const MovieInformation = ({ data, type }) => {
                 </div>
             </div>
             <div className={styles.middleSection}>
-                <img
+                <Image
                     className={styles.poster}
                     src={`https://image.tmdb.org/t/p/original/${poster_path}`}
                     alt={title}
@@ -197,12 +198,14 @@ const MovieInformation = ({ data, type }) => {
                 </div>
 
                 <div>
-                    <img
+                    <Image
                         className={styles.backdrop}
                         src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
                         alt={title}
                     />
-                    {tagline && <p className={styles.tagline}>'{tagline}'</p>}
+                    {tagline && (
+                        <p className={styles.tagline}>&apos;{tagline}&apos;</p>
+                    )}
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import { useUser } from "@component/util/context/UserContext";
 import StarRating from "./StarRating";
 import Seasons from "./Seasons";
+import Image from "next/image";
 
 const TVInformation = ({ data, type }) => {
     const {
@@ -96,7 +97,7 @@ const TVInformation = ({ data, type }) => {
                     </div>
                 </div>
                 <div className={styles.middleSection}>
-                    <img
+                    <Image
                         className={styles.poster}
                         src={`https://image.tmdb.org/t/p/original/${poster_path}`}
                         alt={name}
@@ -190,13 +191,15 @@ const TVInformation = ({ data, type }) => {
                         </p>
                     </div>
                     <div>
-                        <img
+                        <Image
                             className={styles.backdrop}
                             src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
                             alt={name}
                         />
                         {tagline && (
-                            <p className={styles.tagline}>'{tagline}'</p>
+                            <p className={styles.tagline}>
+                                &apos;{tagline}&apos;
+                            </p>
                         )}
                     </div>
                 </div>

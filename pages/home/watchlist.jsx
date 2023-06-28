@@ -1,13 +1,11 @@
 import Layout from "@component/components/Layout";
 import Watchlist from "@component/components/Watchlist";
 import { useEffect, useState, useContext } from "react";
-import { MediaTypeContext } from "@component/util/context/MediaTypeContext";
 import { useMovies } from "@component/util/context/MovieContext";
 import fetchTmdbMovieInfo from "@component/util/helperFunctions/fetchTmdbMovieInfo";
 import styles from "./styles/home.module.css";
 
-export default function watchlist() {
-    const { mediaType } = useContext(MediaTypeContext);
+export default function WatchlistPage() {
     const { watchlist } = useMovies();
     const [movies, setMovies] = useState([]);
     const [tv, setTv] = useState([]);
