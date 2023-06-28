@@ -21,7 +21,7 @@
   width: 100%;
   object-fit: contain;
   border-radius: 10px;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 .infoSection {
@@ -74,7 +74,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 10rem;
+  margin-bottom: 8rem;
   font-size: 1.1em;
   margin-top: 30%;
 }
@@ -82,4 +82,61 @@
 .extraInfo div {
   margin-bottom: 0.5em;
   line-height: 2em;
+}
+
+.userInteractions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.watchlist {
+  display: flex;
+  flex-direction: row;
+  font-size: 1.3em;
+  justify-content: center;
+  align-items: center;
+}
+
+.watchlistBtn,
+.moreInfoBtn {
+  cursor: pointer;
+  border: none;
+}
+
+.watchlistStar {
+  cursor: pointer;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.watchlistStarFull {
+  cursor: pointer;
+  color: gold;
+}
+
+.watchlisttext {
+  background: none;
+  border: none;
+  color: white;
+  margin-right: 0.2em;
+  cursor: pointer;
+}
+
+.thumbup,
+.thumbdown {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  margin: -4em 2em 0 2em;
+  cursor: pointer;
+}
+
+.tagline {
+  font-weight: 400;
+  font-style: italic;
+  text-align: center;
 }

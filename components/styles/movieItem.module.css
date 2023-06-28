@@ -113,6 +113,11 @@
   border: none;
 }
 
+.watchlistStarFull {
+  cursor: pointer;
+  color: gold;
+}
+
 .watchlistStar {
   cursor: pointer;
 }

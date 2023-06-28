@@ -4,6 +4,7 @@ import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import StarIcon from "@mui/icons-material/Star";
 import StarHalfIcon from "@mui/icons-material/StarHalf";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
+import StarRating from "./StarRating";
 import axios from "axios";
 import styles from "./styles/movieItem.module.css";
 import setGenre from "@component/util/helperFunctions/setGenre";
@@ -22,29 +23,6 @@ const getPosterURL = (poster_path) => {
 // Retrieves the correct path for the backdrop image
 const getBackDropURL = (backdrop_path) => {
     return `https://www.themoviedb.org/t/p/w440_and_h660_face/${backdrop_path}`;
-};
-
-// Checks to see how well rated the movie is out of 10 then translates it into stars.
-const starRating = (vote_average) => {
-    const stars = [
-        <StarOutlineIcon key={1} className={styles.star} />,
-        <StarOutlineIcon key={2} className={styles.star} />,
-        <StarOutlineIcon key={3} className={styles.star} />,
-        <StarOutlineIcon key={4} className={styles.star} />,
-        <StarOutlineIcon key={5} className={styles.star} />,
-    ];
-
-    const outOfFive = vote_average / 2;
-    const decimalPart = outOfFive.toString().split(".")[1];
-    let i;
-    for (let i = 0; i + 0.9 < outOfFive; i++) {
-        stars[i] = <StarIcon key={i} className={styles.star} />;
-    }
-    if (decimalPart !== 0 && decimalPart >= 5) {
-        stars[outOfFive] = <StarHalfIcon key={i} className={styles.star} />;
-    }
-
-    return stars;
 };
 
 export default function MovieItem({
@@ -77,6 +55,7 @@ export default function MovieItem({
     const { mediaType } = useContext(MediaTypeContext);
     const router = useRouter();
     const [type, setType] = useState();
+
     const handleWatchlistClick = async () => {
         await handleWatchlist(id, mediaType);
     };
@@ -252,7 +231,7 @@ export default function MovieItem({
             )}
             <div className={styles.starContainer}>
                 {/* <p className={styles.firstTitle}>{title}</p> */}
-                <div className={styles.stars}>{starRating(vote_average)}</div>
+                <div className={styles.stars}>{StarRating(vote_average)}</div>
             </div>
         </div>
     );

@@ -31,9 +31,9 @@ const MovieName = () => {
             {!loading && (
                 <Layout>
                     {type === "tv" ? (
-                        <TVInformation data={data} />
+                        <TVInformation data={data} type={type} />
                     ) : (
-                        <MovieInformation data={data} />
+                        <MovieInformation data={data} type={type} />
                     )}
                 </Layout>
             )}
