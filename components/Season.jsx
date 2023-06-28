@@ -33,9 +33,12 @@ const Season = ({ season, seriesOverview }) => {
                     </div>
                     <div className={styles.stats}>
                         <h3>Stats</h3>
-                        <p>Vote Average: {vote_average}</p>
-                        <p>Air Date: {air_date}</p>
-                        <p>Episode Count: {episode_count}</p>
+                        <p>
+                            Rating: {vote_average} | Air Date: {air_date} |
+                            Episodes: {episode_count}
+                        </p>
+                        {/* <p>Air Date: {air_date}</p>
+                        <p>Episode Count: {episode_count}</p> */}
                     </div>
                 </div>
             </div>

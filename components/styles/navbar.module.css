@@ -106,8 +106,18 @@ span {
 }
 
 .userName {
-  margin-top: 1rem;
   text-align: right;
+  cursor: default;
+}
+
+.logout {
+  text-align: right;
+  cursor: pointer;
+}
+
+
+.logout:hover {
+  text-decoration: underline;
 }
 
 .dropdown {

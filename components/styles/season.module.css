@@ -30,6 +30,7 @@
   object-fit: contain;
   border-radius: 10px;
   margin-bottom: 0.5em;
+  border: solid 0.5px rgba(246, 242, 83, 0.9);
 }
 
 .subContainer h2 {
@@ -45,11 +46,13 @@
 .rightContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  margin: 1em;
 }
 
 .overview {
   text-align: left;
+  border-radius: 10px;
 }
 
 .stats {

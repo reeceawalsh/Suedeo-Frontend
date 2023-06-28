@@ -95,6 +95,19 @@ const Navbar = () => {
                     {/* Dropdown Profile Menu */}
                     {user && (
                         <div className={styles.right}>
+                            {/* <span className={styles.userName}>
+                                Logged in as: {user.username}
+                            </span> */}
+                            <span
+                                className={styles.logout}
+                                onClick={handleLogout}
+                            >
+                                Logout
+                            </span>
+                        </div>
+                    )}
+                    {/* {user && (
+                        <div className={styles.right}>
                             <span className={styles.userName}>
                                 {user.username}
                             </span>
@@ -118,11 +131,11 @@ const Navbar = () => {
                                                 Logout
                                             </span>
                                         </div>
-                                    )}
-                                </div>
+                                    )} */}
+                    {/* </div>
                             </div>
                         </div>
-                    )}
+                    )} */}
                 </div>
             </div>
         </div>

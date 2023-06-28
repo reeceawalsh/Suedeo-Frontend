@@ -161,7 +161,6 @@ const TVInformation = ({ data, type }) => {
                 <div className={styles.extraInfo}>
                     <div className={styles.rightInfo}>
                         <div className={styles.rating}>
-                            {" "}
                             {StarRating(vote_average)}
                         </div>
 
