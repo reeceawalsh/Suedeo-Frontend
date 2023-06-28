@@ -57,17 +57,19 @@ const Navbar = () => {
                             </span>
                         ))}
 
-                    <Link
-                        href="/home/watchlist"
-                        className={`${styles.navBarLink} 
+                    {user && (
+                        <Link
+                            href="/home/watchlist"
+                            className={`${styles.navBarLink} 
                             ${
                                 router.pathname === "/home/watchlist"
                                     ? styles.navBarLinkActive
                                     : styles.navBarLinkInactive
                             }`}
-                    >
-                        Watch List
-                    </Link>
+                        >
+                            Watch List
+                        </Link>
+                    )}
                 </div>
                 <div className={styles.navRight}>
                     {/* <TextField
