@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: false,
-    basePath: "/github-pages",
     async redirects() {
         return [
             // {
