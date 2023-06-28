@@ -14,6 +14,7 @@ import genreList from "@component/lib/data/genreList";
 import { useMovies } from "@component/util/context/MovieContext";
 import { MediaTypeContext } from "@component/util/context/MediaTypeContext";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 // Retrieves the correct path for the poster image
 const getPosterURL = (poster_path) => {
@@ -111,7 +112,7 @@ export default function MovieItem({
             let output = genres.map((item) => item.name).join(", ");
             setFormattedGenres(output.concat("."));
         }
-    });
+    }, [genre_ids, genres]);
 
     useEffect(() => {
         if (name) setType("tv");
@@ -127,7 +128,7 @@ export default function MovieItem({
             {isHovered ? (
                 <>
                     <div>
-                        <img
+                        <Image
                             className={styles.backdrop}
                             src={getBackDropURL(backdrop_path)}
                             alt=""
@@ -222,7 +223,7 @@ export default function MovieItem({
                 </>
             ) : (
                 <>
-                    <img
+                    <Image
                         className={styles.poster}
                         src={getPosterURL(poster_path)}
                         alt=""
