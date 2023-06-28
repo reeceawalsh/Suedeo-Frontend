@@ -97,7 +97,7 @@ const TVInformation = ({ data, type }) => {
                     </div>
                 </div>
                 <div className={styles.middleSection}>
-                    <Image
+                    <img
                         className={styles.poster}
                         src={`https://image.tmdb.org/t/p/original/${poster_path}`}
                         alt={name}
@@ -191,7 +191,7 @@ const TVInformation = ({ data, type }) => {
                         </p>
                     </div>
                     <div>
-                        <Image
+                        <img
                             className={styles.backdrop}
                             src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
                             alt={name}
