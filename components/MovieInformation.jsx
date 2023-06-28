@@ -10,6 +10,7 @@ import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import { useUser } from "@component/util/context/UserContext";
 import StarRating from "./StarRating";
 import Image from "next/image";
+import sliceAndFormat from "@component/util/helperFunctions/sliceAndFormat";
 
 const MovieInformation = ({ data, type }) => {
     const {
@@ -82,7 +83,7 @@ const MovieInformation = ({ data, type }) => {
             <div className={styles.infoSection}>
                 <div>
                     <h1>{title}</h1>
-                    <p>{overview}</p>
+                    <p>{sliceAndFormat(500, overview)}</p>
                     {homepage.length !== 0 && (
                         <button className={styles.btn}>
                             <Link
