@@ -128,7 +128,7 @@ export default function MovieItem({
             {isHovered ? (
                 <>
                     <div>
-                        <Image
+                        <img
                             className={styles.backdrop}
                             src={getBackDropURL(backdrop_path)}
                             alt=""
@@ -223,7 +223,7 @@ export default function MovieItem({
                 </>
             ) : (
                 <>
-                    <Image
+                    <img
                         className={styles.poster}
                         src={getPosterURL(poster_path)}
                         alt=""

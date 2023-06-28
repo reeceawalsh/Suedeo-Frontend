@@ -110,7 +110,7 @@ const MovieInformation = ({ data, type }) => {
                 </div>
             </div>
             <div className={styles.middleSection}>
-                <Image
+                <img
                     className={styles.poster}
                     src={`https://image.tmdb.org/t/p/original/${poster_path}`}
                     alt={title}
@@ -198,7 +198,7 @@ const MovieInformation = ({ data, type }) => {
                 </div>
 
                 <div>
-                    <Image
+                    <img
                         className={styles.backdrop}
                         src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
                         alt={title}
