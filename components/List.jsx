@@ -9,6 +9,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import sliderSettings from "@component/lib/data/sliderSettings";
+import fetchMovieId from "@component/util/helperFunctions/fetchMovieId";
 
 export default function List(props) {
     const { mediaType } = useContext(MediaTypeContext);
