@@ -2,6 +2,8 @@ import LoginContainer from "@component/components/LoginContainer";
 import { useUser } from "@component/util/context/UserContext";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import Image from "next/image";
+const logo = require("../public/RectangleLogo.png");
 
 export default function LoginPage() {
     const { user } = useUser();
@@ -13,7 +15,11 @@ export default function LoginPage() {
         }
     }, [user, router]);
     return (
-        <div className="loginPage">
+        <div className="page">
+            <div className="fakeHeader">
+                <Image className="logo" src={logo} alt="Suedeo Logo" />
+                {/* <h1 className="fakeHeaderTitle">Welcome Back</h1> */}
+            </div>
             <LoginContainer />
         </div>
     );

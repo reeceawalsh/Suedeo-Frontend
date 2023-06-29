@@ -5,7 +5,6 @@ import styles from "./styles/login.module.css";
 import validate from "../validationRules/LoginVR";
 import LoginForm from "./Forms/LoginForm";
 import loginUser from "@component/util/helperFunctions/loginUser";
-
 // login component for the login page
 const LoginContainer = () => {
     // loginDetails are details the user inputs before validation
@@ -91,8 +90,8 @@ const LoginContainer = () => {
     };
 
     return (
-        <div className="formContainer">
-            <div className="formSubContainer">
+        <div className={styles.container}>
+            <div className={styles.subContainer}>
                 <LoginForm
                     styles={styles}
                     setLoginData={setLoginData}

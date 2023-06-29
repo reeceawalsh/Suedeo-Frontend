@@ -4,6 +4,31 @@
   align-self: flex-end;
 }
 
+.container {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  background: #1c1c1c;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.subContainer {
+  height: 39rem;
+  width: 36rem;
+  margin: 8rem auto;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .skip:hover {
   text-decoration: underline;
 }
@@ -22,4 +47,25 @@
 
 .header {
   height: 2rem;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    font-size: 1em;
+  }
+
+  .subContainer {
+    margin-top: 4rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .subContainer {
+    height: 33rem;
+    width: 20rem;
+    padding: 1em;
+  }
 }

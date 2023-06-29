@@ -82,8 +82,8 @@ const SignUp = () => {
     };
 
     return (
-        <div className="formContainer">
-            <div className={"formSubContainer"}>
+        <div className={styles.container}>
+            <div className={styles.subContainer}>
                 <RegistrationForm
                     styles={styles}
                     setRegistrationData={setRegistrationData}
