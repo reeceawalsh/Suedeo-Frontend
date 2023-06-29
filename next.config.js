@@ -7,15 +7,6 @@ const nextConfig = {
         ADMIN_TOKEN: process.env.ADMIN_TOKEN,
         TMDB_READ_ACCESS_KEY: process.env.TMDB_READ_ACCESS_KEY,
     },
-    async redirects() {
-        return [
-            {
-                source: "/",
-                destination: "/home`",
-                permanent: true,
-            },
-        ];
-    },
 };
 
 module.exports = nextConfig;
