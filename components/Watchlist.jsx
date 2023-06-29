@@ -7,7 +7,7 @@ import sliderSettings from "@component/lib/data/sliderSettings";
 
 export default function Watchlist({ media }) {
     return (
-        <div>
+        <div className="listContainer">
             <Slider {...sliderSettings}>
                 {media.map((item, index) => (
                     <MovieItem key={item.id} {...item} />

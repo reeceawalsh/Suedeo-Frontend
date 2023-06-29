@@ -368,6 +368,10 @@ span.error:after {
   padding: 2rem;
 }
 
+.listContainer {
+  margin: 0 1rem;
+}
+
 .modal-title {
   margin: 0 0 20px 0;
   padding: 0;
@@ -463,11 +467,19 @@ span.error:after {
     display: none;
   }
 
+  .listContainer {
+    margin: 0 0.5rem;
+  }
+
   /* Buttons */
   .btn {
     font-size: 1em;
     padding: 0.5rem 1rem;
     width: 15em;
+  }
+
+  .listContainer {
+    margin: 0;
   }
 
   .btn:hover,
