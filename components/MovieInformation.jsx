@@ -82,7 +82,7 @@ const MovieInformation = ({ data, type }) => {
         <div className={styles.subContainer}>
             <div className={styles.infoSection}>
                 <div>
-                    <h1>{title}</h1>
+                    <h1 className={styles.title}>{title}</h1>
                     <p>{sliceAndFormat(500, overview)}</p>
                     {user && (
                         <div className={styles.userInteractions}>

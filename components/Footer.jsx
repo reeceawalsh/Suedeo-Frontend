@@ -16,7 +16,7 @@ const Footer = () => {
             </a>
             <div className={styles.githubIcon}>
                 <a
-                    href="https://github.com/reeceawalsh/Seudeo-Movies"
+                    href="https://github.com/reeceawalsh/Suedeo-Frontend"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
