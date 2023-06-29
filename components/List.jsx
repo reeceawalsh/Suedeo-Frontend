@@ -22,14 +22,14 @@ export default function List(props) {
         loadPages();
     };
 
-    // const getLocalMovieData = async (movie) => {
-    //     let title = movie.title;
-    //     if (!title) title = movie.name;
-    //     if (movie) {
-    //         // will fetch the id if it's in the db and add it to the db if its not.
-    //         await fetchMovieId(movie.id, title, mediaType);
-    //     }
-    // };
+    const getLocalMovieData = async (movie) => {
+        let title = movie.title;
+        if (!title) title = movie.name;
+        if (movie) {
+            // will fetch the id if it's in the db and add it to the db if its not.
+            await fetchMovieId(movie.id, title, mediaType);
+        }
+    };
 
     useEffect(() => {
         changeMediaType();
@@ -63,11 +63,11 @@ export default function List(props) {
         }
     };
 
-    // useEffect(() => {
-    //     movies.forEach((movie) => {
-    //         getLocalMovieData(movie);
-    //     });
-    // }, [movies]);
+    useEffect(() => {
+        movies.forEach((movie) => {
+            getLocalMovieData(movie);
+        });
+    }, [movies]);
 
     // const handleRating = (id) => {
     //     let currentRating = "Default";
