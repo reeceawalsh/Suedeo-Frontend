@@ -417,7 +417,7 @@ span.error:after {
 }
 
 .yellow {
-  color: rgba(246, 242, 83, 1);
+  color: rgb(245, 245, 8);
   font-weight: bolder;
 }
 
