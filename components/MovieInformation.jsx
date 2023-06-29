@@ -147,30 +147,36 @@ const MovieInformation = ({ data, type }) => {
                     alt={title}
                 />
 
-                <div className={styles.watchlist}>
-                    <a
-                        className={styles.watchlisttext}
-                        onClick={() => handleWatchlistClick()}
-                    >
-                        Add to watchlist
-                    </a>
-                    {watch && user && (
-                        <StarIcon
+                {user(
+                    <div className={styles.watchlist}>
+                        <a
+                            className={styles.watchlisttext}
                             onClick={() => handleWatchlistClick()}
-                            className={styles.watchlistStarFull}
                         >
-                            <button className={styles.watchlistBtn}></button>
-                        </StarIcon>
-                    )}
-                    {!watch && (
-                        <StarOutlineIcon
-                            onClick={() => handleWatchlistClick()}
-                            className={styles.watchlistStar}
-                        >
-                            <button className={styles.watchlistBtn}></button>
-                        </StarOutlineIcon>
-                    )}
-                </div>
+                            Add to watchlist
+                        </a>
+                        {watch && (
+                            <StarIcon
+                                onClick={() => handleWatchlistClick()}
+                                className={styles.watchlistStarFull}
+                            >
+                                <button
+                                    className={styles.watchlistBtn}
+                                ></button>
+                            </StarIcon>
+                        )}
+                        {!watch && (
+                            <StarOutlineIcon
+                                onClick={() => handleWatchlistClick()}
+                                className={styles.watchlistStar}
+                            >
+                                <button
+                                    className={styles.watchlistBtn}
+                                ></button>
+                            </StarOutlineIcon>
+                        )}
+                    </div>
+                )}
             </div>
 
             <div className={styles.extraInfo}>

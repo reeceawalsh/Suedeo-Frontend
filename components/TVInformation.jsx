@@ -135,35 +135,37 @@ const TVInformation = ({ data, type }) => {
                         src={`https://image.tmdb.org/t/p/original/${poster_path}`}
                         alt={name}
                     />
+                    {user && (
+                        <div className={styles.watchlist}>
+                            <a
+                                className={styles.watchlisttext}
+                                onClick={() => handleWatchlistClick()}
+                            >
+                                Add to watchlist
+                            </a>
 
-                    <div className={styles.watchlist}>
-                        <a
-                            className={styles.watchlisttext}
-                            onClick={() => handleWatchlistClick()}
-                        >
-                            Add to watchlist
-                        </a>
-                        {watch && user && (
-                            <StarIcon
-                                onClick={() => handleWatchlistClick()}
-                                className={styles.watchlistStarFull}
-                            >
-                                <button
-                                    className={styles.watchlistBtn}
-                                ></button>
-                            </StarIcon>
-                        )}
-                        {!watch && (
-                            <StarOutlineIcon
-                                onClick={() => handleWatchlistClick()}
-                                className={styles.watchlistStar}
-                            >
-                                <button
-                                    className={styles.watchlistBtn}
-                                ></button>
-                            </StarOutlineIcon>
-                        )}
-                    </div>
+                            {watch && (
+                                <StarIcon
+                                    onClick={() => handleWatchlistClick()}
+                                    className={styles.watchlistStarFull}
+                                >
+                                    <button
+                                        className={styles.watchlistBtn}
+                                    ></button>
+                                </StarIcon>
+                            )}
+                            {!watch && (
+                                <StarOutlineIcon
+                                    onClick={() => handleWatchlistClick()}
+                                    className={styles.watchlistStar}
+                                >
+                                    <button
+                                        className={styles.watchlistBtn}
+                                    ></button>
+                                </StarOutlineIcon>
+                            )}
+                        </div>
+                    )}
                 </div>
 
                 <div className={styles.extraInfo}>
