@@ -84,6 +84,36 @@ const MovieInformation = ({ data, type }) => {
                 <div>
                     <h1>{title}</h1>
                     <p>{sliceAndFormat(500, overview)}</p>
+                    {user && (
+                        <div className={styles.userInteractions}>
+                            <div className={styles.thumbdown}>
+                                <ThumbDownIcon
+                                    onClick={() => {
+                                        handleDislikedClick();
+                                    }}
+                                    className={
+                                        disliked == true ? "disliked" : "thumb"
+                                    }
+                                    size="small"
+                                />
+                            </div>
+                            <div className={styles.rating}>
+                                {StarRating(vote_average)}
+                            </div>
+
+                            <div className={styles.thumbup}>
+                                <ThumbUpIcon
+                                    onClick={() => {
+                                        handleLikedClick();
+                                    }}
+                                    className={
+                                        liked == true ? "liked" : "thumb"
+                                    }
+                                    size="small"
+                                />
+                            </div>
+                        </div>
+                    )}
                     {homepage.length !== 0 && (
                         <button className={styles.btn}>
                             <Link
@@ -93,7 +123,7 @@ const MovieInformation = ({ data, type }) => {
                             >
                                 {homepage.includes("netflix")
                                     ? "Watch on Netflix"
-                                    : "Visit Homepage"}
+                                    : "Homepage"}
                             </Link>
                         </button>
                     )}
@@ -116,82 +146,56 @@ const MovieInformation = ({ data, type }) => {
                     src={`https://image.tmdb.org/t/p/original/${poster_path}`}
                     alt={title}
                 />
-                <div className={styles.rating}>{StarRating(vote_average)}</div>
-                {user && (
-                    <div className={styles.userInteractions}>
-                        <div className={styles.thumbdown}>
-                            <ThumbDownIcon
-                                onClick={() => {
-                                    handleDislikedClick();
-                                }}
-                                className={
-                                    disliked == true ? "disliked" : "thumb"
-                                }
-                                size="small"
-                            />
-                        </div>
 
-                        <div className={styles.watchlist}>
-                            <a
-                                className={styles.watchlisttext}
-                                onClick={() => handleWatchlistClick()}
-                            >
-                                Add to watchlist
-                            </a>
-                            {watch && user && (
-                                <StarIcon
-                                    onClick={() => handleWatchlistClick()}
-                                    className={styles.watchlistStarFull}
-                                >
-                                    <button
-                                        className={styles.watchlistBtn}
-                                    ></button>
-                                </StarIcon>
-                            )}
-                            {!watch && (
-                                <StarOutlineIcon
-                                    onClick={() => handleWatchlistClick()}
-                                    className={styles.watchlistStar}
-                                >
-                                    <button
-                                        className={styles.watchlistBtn}
-                                    ></button>
-                                </StarOutlineIcon>
-                            )}
-                        </div>
-                        <div className={styles.thumbup}>
-                            <ThumbUpIcon
-                                onClick={() => {
-                                    handleLikedClick();
-                                }}
-                                className={liked == true ? "liked" : "thumb"}
-                                size="small"
-                            />
-                        </div>
-                    </div>
-                )}
+                <div className={styles.watchlist}>
+                    <a
+                        className={styles.watchlisttext}
+                        onClick={() => handleWatchlistClick()}
+                    >
+                        Add to watchlist
+                    </a>
+                    {watch && user && (
+                        <StarIcon
+                            onClick={() => handleWatchlistClick()}
+                            className={styles.watchlistStarFull}
+                        >
+                            <button className={styles.watchlistBtn}></button>
+                        </StarIcon>
+                    )}
+                    {!watch && (
+                        <StarOutlineIcon
+                            onClick={() => handleWatchlistClick()}
+                            className={styles.watchlistStar}
+                        >
+                            <button className={styles.watchlistBtn}></button>
+                        </StarOutlineIcon>
+                    )}
+                </div>
             </div>
 
             <div className={styles.extraInfo}>
                 <div className={styles.rightInfo}>
-                    <p>
-                        <strong>Release Date:</strong> {release_date}
-                    </p>
-                    <p>
-                        <strong>Genres:</strong>{" "}
-                        {genres.map((genre) => genre.name).join(", ")}
-                    </p>
-                    <p>
-                        <strong>Runtime:</strong> {runtime} mins
-                    </p>
+                    <div className={styles.rightInfo1}>
+                        <p>
+                            <strong>Release Date:</strong> {release_date}
+                        </p>
+                        <p>
+                            <strong>Genres:</strong>{" "}
+                            {genres.map((genre) => genre.name).join(", ")}
+                        </p>
+                        <p>
+                            <strong>Runtime:</strong> {runtime} mins
+                        </p>
+                    </div>
+                    <div className={styles.rightInfo2}>
+                        <p>
+                            <strong>Status:</strong> {status}
+                        </p>
 
-                    <p>
-                        <strong>Status:</strong> {status}
-                    </p>
-
-                    <p>
-                        <strong>Vote average:</strong> {vote_average}
-                    </p>
+                        <p>
+                            <strong>Vote average:</strong> {vote_average}
+                        </p>
+                    </div>
                 </div>
 
                 <div>

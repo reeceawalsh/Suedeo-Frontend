@@ -22,7 +22,6 @@ export default function List(props) {
         slidesToShow: 8, // How many slides to show at once
         slidesToScroll: 8, // How many slides to scroll at once
         adaptiveHeight: true, // Auto change height of slider
-        rows: 2,
         lazyLoad: true, // Lazy loads the components as the slider moves
         responsive: [
             // Responsive breakpoints. Need to reduce amount of slides as the screen gets smaller.

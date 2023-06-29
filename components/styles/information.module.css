@@ -37,7 +37,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-bottom: 5em;
+  margin-bottom: 1em;
 }
 
 .infoSection div {
@@ -51,7 +51,7 @@
 
 .infoSection p {
   line-height: 1.8;
-  font-size: 1.2em;
+  font-size: 1.4em;
   margin-bottom: 0.5em;
 }
 
@@ -82,7 +82,7 @@
   justify-content: space-between;
   width: 100%;
   margin-bottom: 8rem;
-  font-size: 1.1em;
+  font-size: 1.4em;
   margin-top: 15%;
 }
 
@@ -94,13 +94,12 @@
 .userInteractions {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 
 .watchlist {
   display: flex;
   flex-direction: row;
-  font-size: 1.3em;
+  font-size: 1.4em;
   justify-content: center;
   align-items: center;
 }
@@ -117,10 +116,8 @@
 
 .rating {
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin-top: -3rem;
-  margin-bottom: 1.5rem;
+  max-width: 9rem;
 }
 
 .watchlistStarFull {
@@ -138,11 +135,9 @@
 
 .thumbup,
 .thumbdown {
-  display: flex;
-  justify-content: center;
-  justify-self: center;
-  margin: -3em 2em 0 2em;
+  display: inline-block;
   cursor: pointer;
+  max-width: 30px;
 }
 
 .tagline {
@@ -161,4 +156,182 @@
   display: flex;
   flex-direction: column;
   margin: 0 5% 0 5%;
+}
+
+@media (max-width: 1400px) {
+
+  .infoSection {
+    align-items: flex-start;
+  }
+
+  .infoSection h1 {
+    font-size: 2.8em;
+  }
+
+  .subContainer {
+    gap: 2em;
+  }
+
+  .extraInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0;
+    font-size: 1.1em;
+  }
+
+  .btn {
+    font-size: 1em;
+  }
+
+  .extraInfo div {
+    margin-bottom: 0.5em;
+    line-height: 2em;
+  }
+
+  .watchlist {
+    font-size: 1.2em;
+  }
+
+  .seasons h2 {
+    font-size: 2.5em;
+  }
+}
+
+@media (max-width: 1000px) {
+
+
+  .infoSection h1 {
+    font-size: 2.3em;
+  }
+
+  .infoSection p {
+    font-size: 1em;
+  }
+
+  .btn {
+    font-size: 0.9em;
+  }
+
+  .extraInfo {
+    font-size: 1em;
+  }
+
+  .watchlist {
+    font-size: 1.1em;
+  }
+
+}
+
+@media (max-width: 750px) {
+  .subContainer {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1.4fr 2fr;
+  }
+
+  .middleSection {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+
+  .infoSection {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 4;
+  }
+
+  .middleSection,
+  .infoSection {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .extraInfo {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+
+  .rightInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .seasons h2 {
+    font-size: 2em;
+  }
+
+}
+
+
+@media (max-width: 555px) {
+  .infoSection h1 {
+    font-size: 1.3em;
+  }
+
+  .userInteractions {
+    margin-top: 1em;
+  }
+
+  .container p {
+    font-size: 0.7em;
+  }
+
+  .watchlist {
+    font-size: 0.8em;
+  }
+
+  .btn {
+    font-size: 0.6em;
+  }
+
+  @media (max-width: 490px) {
+    .subContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .infoSection {
+      order: 1;
+    }
+
+    .infoSection h1 {
+      font-size: 1.4em;
+    }
+
+    .userInteractions {
+      margin-top: 1em;
+    }
+
+    .container p {
+      font-size: 1em;
+    }
+
+    .watchlist {
+      font-size: 1em;
+    }
+
+    .btn {
+      font-size: 1em;
+    }
+
+    .middleSection {
+      order: 2;
+      width: 60%;
+    }
+
+
+    .extraInfo {
+      order: 3;
+    }
+
+  }
 }
