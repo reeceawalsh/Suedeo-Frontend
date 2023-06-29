@@ -12,3 +12,20 @@
 .container {
   width: 100%;
 }
+
+@media (max-width: 850px) {
+  .title {
+    font-size: 35px;
+  }
+
+  .titleContainer {
+    margin-left: 2rem;
+  }
+
+}
+
+@media (max-width: 525px) {
+  .title {
+    font-size: 30px;
+  }
+}

@@ -11,6 +11,7 @@ const Seasons = ({ seasons, seriesOverview }) => {
         slidesToShow: 1,
         slidesToScroll: 1,
         initialSlide: 0,
+        adaptiveHeight: true,
     };
 
     seasons = seasons.filter((season) => season.name != "Specials");
