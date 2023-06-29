@@ -49,6 +49,13 @@ export default function WatchlistPage() {
                         <div className={styles.container} key={index}>
                             <div className={styles.titleContainer}>
                                 <h1 className={styles.title}>{item}</h1>
+                                <h2 className={styles.title2}>
+                                    {item == "Movies"
+                                        ? movies.length === 0 &&
+                                          "Movies watchlist is empty"
+                                        : tv.length === 0 &&
+                                          "Series watchlist is empty"}
+                                </h2>
                             </div>
                             {item == "Movies" ? (
                                 <Watchlist media={movies} />
@@ -58,6 +65,11 @@ export default function WatchlistPage() {
                         </div>
                     );
                 })}
+                <p className={styles.infoTip}>
+                    {movies.length === 0 &&
+                        tv.length === 0 &&
+                        "Click the star in the top right corner of any show or movie you'd like to add to your watchlist."}
+                </p>
             </div>
         </Layout>
     );

@@ -13,6 +13,14 @@
   width: 100%;
 }
 
+.title2 {
+  font-weight: 400;
+}
+
+.infoTip {
+  margin-top: 10rem;
+}
+
 @media (max-width: 850px) {
   .title {
     font-size: 35px;
