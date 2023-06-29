@@ -82,6 +82,38 @@ const TVInformation = ({ data, type }) => {
                     <div>
                         <h1 className={styles.title}>{name}</h1>
                         <p>{sliceAndFormat(500, overview)}</p>
+                        {user && (
+                            <div className={styles.userInteractions}>
+                                <div className={styles.thumbdown}>
+                                    <ThumbDownIcon
+                                        onClick={() => {
+                                            handleDislikedClick();
+                                        }}
+                                        className={
+                                            disliked == true
+                                                ? "disliked"
+                                                : "thumb"
+                                        }
+                                        size="small"
+                                    />
+                                </div>
+                                <div className={styles.rating}>
+                                    {StarRating(vote_average)}
+                                </div>
+                                <div className={styles.thumbup}>
+                                    <ThumbUpIcon
+                                        onClick={() => {
+                                            handleLikedClick();
+                                        }}
+                                        className={
+                                            liked == true ? "liked" : "thumb"
+                                        }
+                                        size="small"
+                                    />
+                                </div>
+                            </div>
+                        )}
+
                         {homepage.length !== 0 && (
                             <button className={styles.btn}>
                                 <Link
@@ -103,92 +135,67 @@ const TVInformation = ({ data, type }) => {
                         src={`https://image.tmdb.org/t/p/original/${poster_path}`}
                         alt={name}
                     />
-                    <div className={styles.rating}>
-                        {StarRating(vote_average)}
-                    </div>
-                    {user && (
-                        <div className={styles.userInteractions}>
-                            <div className={styles.thumbdown}>
-                                <ThumbDownIcon
-                                    onClick={() => {
-                                        handleDislikedClick();
-                                    }}
-                                    className={
-                                        disliked == true ? "disliked" : "thumb"
-                                    }
-                                    size="small"
-                                />
-                            </div>
 
-                            <div className={styles.watchlist}>
-                                <a
-                                    className={styles.watchlisttext}
-                                    onClick={() => handleWatchlistClick()}
-                                >
-                                    Add to watchlist
-                                </a>
-                                {watch && user && (
-                                    <StarIcon
-                                        onClick={() => handleWatchlistClick()}
-                                        className={styles.watchlistStarFull}
-                                    >
-                                        <button
-                                            className={styles.watchlistBtn}
-                                        ></button>
-                                    </StarIcon>
-                                )}
-                                {!watch && (
-                                    <StarOutlineIcon
-                                        onClick={() => handleWatchlistClick()}
-                                        className={styles.watchlistStar}
-                                    >
-                                        <button
-                                            className={styles.watchlistBtn}
-                                        ></button>
-                                    </StarOutlineIcon>
-                                )}
-                            </div>
-                            <div className={styles.thumbup}>
-                                <ThumbUpIcon
-                                    onClick={() => {
-                                        handleLikedClick();
-                                    }}
-                                    className={
-                                        liked == true ? "liked" : "thumb"
-                                    }
-                                    size="small"
-                                />
-                            </div>
-                        </div>
-                    )}
+                    <div className={styles.watchlist}>
+                        <a
+                            className={styles.watchlisttext}
+                            onClick={() => handleWatchlistClick()}
+                        >
+                            Add to watchlist
+                        </a>
+                        {watch && user && (
+                            <StarIcon
+                                onClick={() => handleWatchlistClick()}
+                                className={styles.watchlistStarFull}
+                            >
+                                <button
+                                    className={styles.watchlistBtn}
+                                ></button>
+                            </StarIcon>
+                        )}
+                        {!watch && (
+                            <StarOutlineIcon
+                                onClick={() => handleWatchlistClick()}
+                                className={styles.watchlistStar}
+                            >
+                                <button
+                                    className={styles.watchlistBtn}
+                                ></button>
+                            </StarOutlineIcon>
+                        )}
+                    </div>
                 </div>
 
                 <div className={styles.extraInfo}>
                     <div className={styles.rightInfo}>
-                        <p>
-                            <strong>First aired:</strong> {first_air_date}
-                        </p>
-                        <p>
-                            <strong>Genres:</strong>{" "}
-                            {genres.map((genre) => genre.name).join(", ")}
-                        </p>
-                        <p>
-                            <strong>Number of episodes:</strong>{" "}
-                            {number_of_episodes}
-                        </p>
-                        <p>
-                            <strong>Number of seasons:</strong>{" "}
-                            {number_of_seasons}
-                        </p>
-                        <p>
-                            <strong>Status:</strong> {status}
-                        </p>
-                        <p>
-                            <strong>Last air date:</strong> {last_air_date}
-                        </p>
-                        <p>
-                            <strong>Vote average:</strong> {vote_average}
-                        </p>
+                        <div className={styles.rightInfo1}>
+                            <p>
+                                <strong>First aired:</strong> {first_air_date}
+                            </p>
+                            <p>
+                                <strong>Genres:</strong>{" "}
+                                {genres.map((genre) => genre.name).join(", ")}
+                            </p>
+                            <p>
+                                <strong>Number of episodes:</strong>{" "}
+                                {number_of_episodes}
+                            </p>
+                            <p>
+                                <strong>Number of seasons:</strong>{" "}
+                                {number_of_seasons}
+                            </p>
+                        </div>
+                        <div className={styles.rightInfo2}>
+                            <p>
+                                <strong>Status:</strong> {status}
+                            </p>
+                            <p>
+                                <strong>Last air date:</strong> {last_air_date}
+                            </p>
+                            <p>
+                                <strong>Vote average:</strong> {vote_average}
+                            </p>
+                        </div>
                     </div>
                     <div>
                         <img
