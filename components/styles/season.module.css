@@ -10,6 +10,12 @@
   background: #1c1c1c;
 }
 
+.statsInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 .subContainer {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -67,6 +73,7 @@
   margin-top: 0.5em;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .stats p {
@@ -130,6 +137,10 @@
 
   @media (max-width: 490px) {
 
+    .statsInfo {
+      flex-direction: column;
+    }
+
     .container {
       display: flex;
       flex-direction: column;
@@ -154,6 +165,10 @@
 
     .subContainer h3 {
       font-size: 1.3em;
+    }
+
+    .stats {
+      text-align: left;
     }
   }
 }
