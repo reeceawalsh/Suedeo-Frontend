@@ -21,14 +21,14 @@ const Navbar = () => {
     };
     return (
         <div className={styles.navbar}>
-            <div className={styles.navContainer}>
-                <div className={styles.navLeft}>
-                    <Image
-                        id="logo"
-                        className={styles.logo}
-                        src={logo}
-                        alt="Suedeo Logo"
-                    />
+            <Image
+                id="logo"
+                className={styles.logo}
+                src={logo}
+                alt="Suedeo Logo"
+            />
+            <div className={styles.navRight}>
+                <div className={styles.navLinks}>
                     <Link
                         href="/home"
                         className={`${styles.navBarLink} 
@@ -71,8 +71,29 @@ const Navbar = () => {
                         </Link>
                     )}
                 </div>
-                <div className={styles.navRight}>
-                    {/* <TextField
+                {!user ? (
+                    <div className={styles.userLinks}>
+                        <Link className={styles.navBarLink} href="/signup">
+                            Sign Up
+                        </Link>
+                        <Link className={styles.navBarLink} href="/login">
+                            Login
+                        </Link>
+                    </div>
+                ) : (
+                    <div className={styles.userLinks}>
+                        {/* <span className={styles.userName}>
+                                Logged in as: {user.username}
+                            </span> */}
+                        <span
+                            className={styles.navBarLink}
+                            onClick={handleLogout}
+                        >
+                            Logout
+                        </span>
+                    </div>
+                )}
+                {/* <TextField
                         id="search"
                         label="Search"
                         size="small"
@@ -86,59 +107,6 @@ const Navbar = () => {
                             ),
                         }}
                     /> */}
-                    <span>
-                        {!user && (
-                            <div className={styles.right}>
-                                <Link href="/signup">Sign Up</Link>
-                                <Link href="/login">Login</Link>
-                            </div>
-                        )}
-                    </span>
-                    {/* Dropdown Profile Menu */}
-                    {user && (
-                        <div className={styles.right}>
-                            {/* <span className={styles.userName}>
-                                Logged in as: {user.username}
-                            </span> */}
-                            <span
-                                className={styles.logout}
-                                onClick={handleLogout}
-                            >
-                                Logout
-                            </span>
-                        </div>
-                    )}
-                    {/* {user && (
-                        <div className={styles.right}>
-                            <span className={styles.userName}>
-                                {user.username}
-                            </span>
-                            <div
-                                className={styles.dropdown}
-                                onMouseEnter={() => setDropdownVisible(true)}
-                                onMouseLeave={() => setDropdownVisible(false)}
-                            >
-                                <Image
-                                    id="profile-img"
-                                    className={styles.profile}
-                                    src={userIcon}
-                                    alt="Profile Pic"
-                                />
-                                <div className={styles.profile}>
-                                    <div className={styles.icon} />
-                                    {dropdownVisible && (
-                                        <div className={styles.dropdownContent}>
-                                            <span>Settings</span>
-                                            <span onClick={handleLogout}>
-                                                Logout
-                                            </span>
-                                        </div>
-                                    )} */}
-                    {/* </div>
-                            </div>
-                        </div>
-                    )} */}
-                </div>
             </div>
         </div>
     );
