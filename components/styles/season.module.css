@@ -65,7 +65,7 @@
 .overview {
   text-align: left;
   border-radius: 10px;
-  overflow: scroll;
+  overflow-x: scroll;
   max-height: 35rem;
 }
 
@@ -156,7 +156,6 @@
 
     .overview {
       max-height: 60rem;
-      overflow: visible;
     }
 
     .subContainer p {
