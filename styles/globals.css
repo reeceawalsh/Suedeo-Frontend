@@ -447,3 +447,16 @@ span.error:after {
   height: 5rem;
   width: 8rem;
 }
+
+.slick-slider {
+  margin: 0 2rem;
+}
+
+.slick-arrow {
+  background: black !important;
+  border-radius: 50%;
+}
+
+.slick-prev {
+  background: black;
+}
