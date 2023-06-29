@@ -379,35 +379,34 @@
 
   }
 }
-  .watchlist {
-    display: flex;
-    flex-direction: row;
-    font-size: 1.2em;
-    justify-content: center;
-    align-items: center;
-  }
 
-  .watchlistStar {
-    cursor: pointer;
-  }
-
-  .rating {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: -3rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .watchlistStarFull {
-    cursor: pointer;
-    color: gold;
-  }
-
-  .seasons h2 {
-    text-align: center;
-    font-size: 3em;
-    margin-bottom: 2rem;
-  }
+.watchlist {
+  display: flex;
+  flex-direction: row;
+  font-size: 1.2em;
+  justify-content: center;
+  align-items: center;
 }
 
+.watchlistStar {
+  cursor: pointer;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -3rem;
+  margin-bottom: 1.5rem;
+}
+
+.watchlistStarFull {
+  cursor: pointer;
+  color: gold;
+}
+
+.seasons h2 {
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 2rem;
+}
