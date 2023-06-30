@@ -2,6 +2,7 @@ import PasswordInput from "../FormElements/PasswordInput";
 import TextInput from "../FormElements/TextInput";
 import DateInput from "../FormElements/DateInput";
 import Link from "next/link";
+import { useState } from "react";
 
 // registration form used by the register component
 export default function RegistrationForm({
@@ -13,6 +14,11 @@ export default function RegistrationForm({
     alreadyRegistered,
     validRegistration,
 }) {
+    const [startDate, setStartDate] = useState(
+        registrationData.dateOfBirth
+            ? new Date(registrationData.dateOfBirth)
+            : null
+    );
     return (
         <div className={styles.registrationForm} data-testid="register-form">
             <form>
@@ -59,19 +65,22 @@ export default function RegistrationForm({
                     </div>
                 )}
                 <DateInput
-                    type="date"
+                    selected={startDate}
+                    name="Date"
                     label="Date of Birth"
-                    name="Date of Birth"
-                    placeholder="Date of Birth (dd/mm/yy)"
                     value={registrationData.dateOfBirth}
                     error={errors.dateOfBirth}
-                    autoComplete="no"
-                    onChange={(event) =>
+                    onChange={(date) => {
+                        setStartDate(date);
+                        let formattedDate = "";
+                        if (date) {
+                            formattedDate = date.toISOString().substring(0, 10);
+                        }
                         setRegistrationData({
                             ...registrationData,
-                            dateOfBirth: event.target.value,
-                        })
-                    }
+                            dateOfBirth: formattedDate,
+                        });
+                    }}
                 />
                 <PasswordInput
                     className={styles.password}
@@ -88,6 +97,7 @@ export default function RegistrationForm({
                         })
                     }
                 />
+
                 <button
                     className="btn"
                     onClick={handleRegister}

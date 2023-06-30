@@ -141,7 +141,7 @@ label {
 input {
   background-color: rgba(233, 233, 233, 0.922);
   color: black;
-  font-size: 1.5rem;
+  font-size: 1em;
   outline: black;
 }
 
@@ -275,7 +275,7 @@ span.error:after {
   position: relative;
   margin-bottom: 1rem;
   min-width: 100%;
-  font-size: 1.3rem;
+  font-size: 1.1em;
 }
 
 .form-sub-group {
@@ -300,8 +300,6 @@ span.error:after {
   border-radius: 0.25rem;
   width: 30rem;
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-  min-width: 100%;
-  min-height: 100%;
   margin-top: 0;
 }
 
@@ -466,6 +464,10 @@ span.error:after {
     display: none;
   }
 
+  .form-control {
+    font-size: 1em;
+  }
+
 
   .css-i4bv87-MuiSvgIcon-root {
     width: 0.8em !important;
@@ -531,7 +533,7 @@ span.error:after {
 
   .btn {
     margin-bottom: 0.5em;
-    font-size: 0.8em;
+    font-size: 0.9em;
     width: 10em;
   }
 }

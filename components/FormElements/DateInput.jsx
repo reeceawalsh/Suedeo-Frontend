@@ -1,4 +1,6 @@
-// date input used in the registration form, if there is an error message in the props it will display them as a span and also outline the input in red.
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 const DateInput = (props) => {
     return (
         <div>
@@ -7,16 +9,19 @@ const DateInput = (props) => {
                     {props.error}
                 </span>
                 <label>{props.label}:</label>
-                <input
-                    type="date"
+                <DatePicker
+                    selected={props.startDate}
                     name={props.name}
-                    placeholder={props.placeholder}
-                    value={props.value}
-                    onChange={props.onChange}
-                    min="0"
+                    value={props.value || ""}
                     className={`form-control ${
                         props.error ? "red-outline" : ""
                     }`}
+                    peekNextMonth
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    placeholderText="Date of Birth (dd/mm/yy)"
+                    onChange={props.onChange}
                 />
             </div>
         </div>
