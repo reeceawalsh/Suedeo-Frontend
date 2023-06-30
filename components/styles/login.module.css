@@ -65,10 +65,12 @@
   cursor: grab;
 }
 
+
 .loginForm form {
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
+  width: 40vw;
 }
 
 .loginForm form input {
@@ -102,14 +104,15 @@
   }
 
   .subContainer {
-    margin-top: 4rem;
     margin-left: 2rem;
     margin-right: 2rem;
+    margin-bottom: 10rem;
   }
 
-  .loginForm {
-    width: 35rem;
+  .loginForm form {
+    width: auto;
   }
+
 
   .container {
     flex-direction: column;
@@ -122,23 +125,31 @@
   }
 }
 
-@media (max-width: 650px) {
-
-
-  .loginForm {
-    width: 30rem;
-  }
-}
-
 @media (max-width: 550px) {
+
+  .skip {
+    font-size: 0.8em;
+  }
 
   .subContainer {
     padding: 1em;
+    width: 90vw;
     margin: 0;
+  }
+
+  .loginForm form input {
+    height: 2rem;
   }
 
   .loginForm {
     margin: 0;
-    width: 20rem;
+    width: 100%;
+  }
+}
+
+@media (max-width: 300) {
+
+  .skip {
+    font-size: 0.6em;
   }
 }

@@ -97,14 +97,18 @@ export default function RegistrationForm({
                         })
                     }
                 />
-
-                <button
-                    className="btn"
-                    onClick={handleRegister}
-                    data-testid="create-account-button"
-                >
-                    Create Account
-                </button>
+                <div className="btns">
+                    <button
+                        className="btn"
+                        onClick={handleRegister}
+                        data-testid="create-account-button"
+                    >
+                        Create Account
+                    </button>
+                    <button className="btn" data-testid="login-page">
+                        <Link href="/login">Login</Link>
+                    </button>
+                </div>
                 {!validRegistration && (
                     <p className="error error-message">
                         That username or email is already taken.

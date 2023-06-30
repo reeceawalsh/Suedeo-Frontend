@@ -187,6 +187,9 @@ input:active {
 .page {
   display: flex;
   flex-direction: column;
+  overflow: none;
+  width: 100vw;
+  height: 100vh;
 }
 
 
@@ -272,9 +275,7 @@ span.error:after {
 }
 
 .form-group {
-  position: relative;
   margin-bottom: 1rem;
-  min-width: 100%;
   font-size: 1.1em;
 }
 
@@ -298,7 +299,7 @@ span.error:after {
   background-color: #fff;
   background-clip: padding-box;
   border-radius: 0.25rem;
-  width: 30rem;
+  width: 100%;
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
   margin-top: 0;
 }
@@ -317,11 +318,18 @@ span.error:after {
   display: none !important;
 }
 
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
 
 .eye-icon {
   position: absolute;
-  right: 5px;
-  top: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 5%;
+  top: 55%;
   transform: translateY(-50%);
   cursor: pointer;
   background: none;
@@ -510,11 +518,13 @@ span.error:after {
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
   .form-control {
     padding: 5px;
-    width: 15rem;
+    /* width: 25rem; */
   }
+
+
 
   .css-i4bv87-MuiSvgIcon-root {
     width: 0.6em !important;
@@ -525,15 +535,35 @@ span.error:after {
     font-size: 0.9em;
   }
 
-  .btns {
-    /* flex-direction: column; */
+  /* .btns {
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
+  } */
 
   .btn {
     margin-bottom: 0.5em;
-    font-size: 0.9em;
+    font-size: 0.8em;
     width: 10em;
+  }
+
+  .btn:hover,
+  .btn:focus,
+  .btn:active {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 320px) {
+  .btn {
+    padding: 5px;
+    font-size: 0.7em;
+    width: 8em;
+  }
+
+  .btn:hover,
+  .btn:focus,
+  .btn:active {
+    font-size: 0.8em;
   }
 }

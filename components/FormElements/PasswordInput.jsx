@@ -25,27 +25,29 @@ const PasswordInput = (props) => {
                 </span>
                 <div className="form-sub-group">
                     <label>{props.label}:</label>
-                    <input
-                        type={showPassword ? "text" : "password"}
-                        name={props.name}
-                        placeholder={props.placeholder}
-                        value={props.value}
-                        onChange={props.onChange}
-                        className={`form-control password-input ${
-                            props.errors ? "red-outline" : ""
-                        }`}
-                        autoComplete={props.autoComplete}
-                    />
-                    <div
-                        className="eye-icon"
-                        data-testid="eye-button"
-                        onClick={(e) => toggleShowPassword(e)}
-                    >
-                        {showPassword ? (
-                            <FontAwesomeIcon icon={faEyeSlash} />
-                        ) : (
-                            <FontAwesomeIcon icon={faEye} />
-                        )}
+                    <div className="form-sub-group">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            name={props.name}
+                            placeholder={props.placeholder}
+                            value={props.value}
+                            onChange={props.onChange}
+                            className={`form-control password-input ${
+                                props.errors ? "red-outline" : ""
+                            }`}
+                            autoComplete={props.autoComplete}
+                        />
+                        <div
+                            className="eye-icon"
+                            data-testid="eye-button"
+                            onClick={(e) => toggleShowPassword(e)}
+                        >
+                            {showPassword ? (
+                                <FontAwesomeIcon icon={faEyeSlash} />
+                            ) : (
+                                <FontAwesomeIcon icon={faEye} />
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

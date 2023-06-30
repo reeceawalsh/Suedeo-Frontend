@@ -79,13 +79,13 @@ export default function LoginForm({
                         >
                             Sign Up
                         </button>
-                        <button
+                        {/* <button
                             className="btn"
                             onClick={handleForgotPassword}
                             data-testid="forgot-password-button"
                         >
                             Forgot Password
-                        </button>
+                        </button> */}
                     </div>
                 </div>
             </form>

@@ -18,9 +18,6 @@
 }
 
 .subContainer {
-  height: 39rem;
-  width: 36rem;
-  margin: 8rem auto;
   padding: 2rem;
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
@@ -37,6 +34,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
+  width: 40vw;
 }
 
 .registrationForm form input {
@@ -59,13 +57,19 @@
     margin-left: 2rem;
     margin-right: 2rem;
   }
+
+  .registrationForm form {
+    width: auto;
+  }
+
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
 
   .subContainer {
     height: 33rem;
-    width: 20rem;
     padding: 1em;
+    margin-bottom: 0;
   }
+
 }
