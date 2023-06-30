@@ -15,11 +15,13 @@ export default function LandingPage() {
     }, [user, router]);
     return (
         <div className={styles.container}>
-            {/* This is the left hand side of login page */}
             <div className={styles.subContainer}>
                 <div className={styles.content}>
+                    <Link className={`${styles.skip} yellow`} href="/home">
+                        Continue as guest
+                    </Link>
                     <h1 className={styles.title}>
-                        Welcome to <span className="yellow">Suedeo Movies</span>
+                        Welcome to <span className="yellow">Suedeo</span>
                     </h1>
                     <h2 className={styles.subtitle}>
                         Sign Up For {""}
@@ -43,9 +45,6 @@ export default function LandingPage() {
                         </Link>
                         <Link href="/login">
                             <button className="btn">Login</button>
-                        </Link>
-                        <Link href="/home">
-                            <button className="btn">Continue as Guest</button>
                         </Link>
                     </div>
                 </div>

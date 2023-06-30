@@ -184,28 +184,32 @@ export default function MovieItem({
                                 </div>
                                 {user && (
                                     <div className={styles.rating}>
-                                        <ThumbDownIcon
-                                            onClick={() => {
-                                                handleDislikedClick();
-                                            }}
-                                            className={
-                                                disliked == true
-                                                    ? "disliked thumb-down"
-                                                    : "thumb thumb-down"
-                                            }
-                                            size="small"
-                                        />
-                                        <ThumbUpIcon
-                                            onClick={() => {
-                                                handleLikedClick();
-                                            }}
-                                            className={
-                                                liked == true
-                                                    ? "liked thumb-up"
-                                                    : "thumb thumb-up"
-                                            }
-                                            size="small"
-                                        />
+                                        <div>
+                                            <ThumbDownIcon
+                                                onClick={() => {
+                                                    handleDislikedClick();
+                                                }}
+                                                className={
+                                                    disliked == true
+                                                        ? "disliked thumb-down"
+                                                        : "thumb thumb-down"
+                                                }
+                                                size="small"
+                                            />
+                                        </div>
+                                        <div>
+                                            <ThumbUpIcon
+                                                onClick={() => {
+                                                    handleLikedClick();
+                                                }}
+                                                className={
+                                                    liked == true
+                                                        ? "liked thumb-up"
+                                                        : "thumb thumb-up"
+                                                }
+                                                size="small"
+                                            />
+                                        </div>
                                     </div>
                                 )}
                                 <div className={styles.movieButtons}>

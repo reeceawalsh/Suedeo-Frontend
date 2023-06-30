@@ -1,17 +1,28 @@
 .container {
   font-family: 'Montserrat', sans-serif;
-  color: black;
+  color: white;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.1)),
-    url(https://images.unsplash.com/photo-1616530940355-351fabd9524b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1935&q=80);
+  background: #1f1f1f;
   background-size: cover;
   min-height: 100vh;
   min-width: 100vw;
 }
 
+.skip {
+  font-size: 1.5rem;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+}
+
+.skip:hover {
+  text-decoration: underline;
+}
+
 .subContainer {
+  display: flex;
   flex-grow: 5;
   opacity: 100%;
 }
@@ -25,9 +36,8 @@
   font-size: 4rem;
   text-align: left;
   margin-bottom: 0.2rem;
+  margin-top: 0.5em;
 }
-
-
 
 .subtitle {
   color: white;
@@ -38,7 +48,8 @@
 }
 
 .content {
-  max-width: 90%;
+  position: relative;
+  max-width: 60vw;
   margin: 5rem auto;
   padding: 2rem;
   background-color: rgba(0, 0, 0, 0.4);
@@ -53,4 +64,82 @@
   color: white;
   opacity: 0.95;
   line-height: 1.5;
+}
+
+@media (max-width: 1440px) {
+  .content {
+    max-width: 80vw;
+  }
+}
+
+@media (max-width: 1020px) {
+  .title {
+    font-size: 3.5rem;
+  }
+
+  .skip {
+    font-size: 1.2rem;
+  }
+
+  .subtitle {
+    font-weight: 400;
+    font-size: 2rem;
+  }
+
+  .desc {
+    line-height: 2em;
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 840px) {
+  .title {
+    font-size: 3rem;
+    line-height: 1.3em;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+  }
+
+  .skip {
+    font-size: 1rem;
+  }
+
+  .desc {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .content {
+    max-width: 90vw;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .title {
+    font-size: 1.5rem;
+    margin: 2em 0 1em 0;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: bold;
+  }
+
+
+  .skip {
+    font-size: 0.9rem;
+  }
+
+  .desc {
+    font-size: 0.85rem;
+    text-align: center;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
 }

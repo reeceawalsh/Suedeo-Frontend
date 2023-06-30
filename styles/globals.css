@@ -150,37 +150,36 @@ input:active {
   border: 1px black solid;
 }
 
-.thumb-up {
-  margin-left: 140px;
+.thumb {
+  display: flex;
+  flex: 1;
+  cursor: pointer;
 }
 
-.thumbUp,
+.thumbUp {
+  justify-content: flex-end;
+}
+
+
 .thumbDown {
-  font-size: 1rem;
-  cursor: pointer;
+  justify-content: flex-start;
 }
 
 .liked {
   position: relative;
-  width: 20px;
-  height: 20px;
   color: rgba(246, 242, 83, 1);
 }
 
 .disliked {
   position: relative;
-  width: 20px;
-  height: 20px;
   color: red;
 }
 
 .thumb-up:hover {
-  cursor: pointer;
   color: rgba(246, 242, 83, 1);
 }
 
 .thumb-down:hover {
-  cursor: pointer;
   color: red;
 }
 
@@ -462,9 +461,29 @@ span.error:after {
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 840px) {
   .fakeHeaderTitle {
     display: none;
+  }
+
+
+  .css-i4bv87-MuiSvgIcon-root {
+    width: 0.8em !important;
+    height: 0.8em !important;
+  }
+
+
+
+  .liked {
+    position: relative;
+
+    color: rgba(246, 242, 83, 1);
+  }
+
+  .disliked {
+    position: relative;
+    height: px;
+    color: red;
   }
 
   .listContainer {
@@ -474,8 +493,8 @@ span.error:after {
   /* Buttons */
   .btn {
     font-size: 1em;
-    padding: 0.5rem 1rem;
-    width: 15em;
+    padding: 0.5rem 0.5rem;
+    width: 12em;
   }
 
   .listContainer {
@@ -495,11 +514,24 @@ span.error:after {
     width: 15rem;
   }
 
+  .css-i4bv87-MuiSvgIcon-root {
+    width: 0.6em !important;
+    height: 0.6em !important;
+  }
+
   .form-group {
     font-size: 1em;
   }
 
+  .btns {
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+  }
 
-
-
+  .btn {
+    margin-bottom: 0.5em;
+    font-size: 0.8em;
+    width: 10em;
+  }
 }
