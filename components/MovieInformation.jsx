@@ -147,7 +147,7 @@ const MovieInformation = ({ data, type }) => {
                     alt={title}
                 />
 
-                {user(
+                {user && (
                     <div className={styles.watchlist}>
                         <a
                             className={styles.watchlisttext}
