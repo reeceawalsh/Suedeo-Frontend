@@ -8,7 +8,7 @@ const Footer = () => {
     return (
         <footer className={styles.footer}>
             <a
-                href="https://github.com/reeceawalsh/Seudeo-Movies"
+                href="https://github.com/reeceawalsh/Suedeo-Movies"
                 target="_blank"
                 rel="noopener noreferrer"
             >
