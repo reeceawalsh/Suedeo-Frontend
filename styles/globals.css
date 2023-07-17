@@ -377,6 +377,12 @@ span.error:after {
   margin: 0 1rem;
 }
 
+.listContainer2 {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+}
+
 .modal-title {
   margin: 0 0 20px 0;
   padding: 0;

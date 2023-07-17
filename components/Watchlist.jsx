@@ -7,12 +7,25 @@ import sliderSettings from "@component/lib/data/sliderSettings";
 
 export default function Watchlist({ media }) {
     return (
-        <div className="listContainer">
-            <Slider {...sliderSettings}>
-                {media.map((item, index) => (
-                    <MovieItem key={item.id} {...item} />
-                ))}
-            </Slider>
+        <div>
+            {media.length > sliderSettings.slidesToShow ? (
+                <div className="listContainer">
+                    <Slider
+                        {...sliderSettings}
+                        infinite={media.length > sliderSettings.slidesToShow}
+                    >
+                        {media.map((item, index) => (
+                            <MovieItem key={item.id} {...item} />
+                        ))}
+                    </Slider>
+                </div>
+            ) : (
+                <div className="listContainer2">
+                    {media.map((item, index) => (
+                        <MovieItem key={item.id} {...item} />
+                    ))}
+                </div>
+            )}
         </div>
     );
 }

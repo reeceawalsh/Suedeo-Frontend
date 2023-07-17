@@ -105,9 +105,9 @@ export default function RegistrationForm({
                     >
                         Create Account
                     </button>
-                    <button className="btn" data-testid="login-page">
-                        <Link href="/login">Login</Link>
-                    </button>
+                    <Link className="btn" href="/login">
+                        Login
+                    </Link>
                 </div>
                 {!validRegistration && (
                     <p className="error error-message">
