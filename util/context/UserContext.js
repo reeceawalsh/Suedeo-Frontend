@@ -5,10 +5,10 @@ import useUnsetToken from "../hooks/useUnsetToken";
 import useForceUpdate from "../hooks/useForceUpdate";
 import { useRouter } from "next/router";
 
-// create context for User
+// Create context for User.
 const User = createContext({ user: null, loading: false });
 
-// this user provider keeps track of the
+// This is a Provider component that wraps its children with the User context, giving children access to the values.
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
