@@ -17,7 +17,7 @@ export const useMovies = () => {
     return useContext(MovieContext);
 };
 
-// This is a Provider component that wraps its children with the Movie context.
+// This is a Provider component that wraps its children with the Movie context, giving it's children access to the values.
 export function MovieProvider({ children }) {
     // Set state for likedMovies, dislikedMovies and watchlist. Storing these here ensures they are accessible and up to date everywhere.
     const [likedMovies, setLikedMovies] = useState([]);

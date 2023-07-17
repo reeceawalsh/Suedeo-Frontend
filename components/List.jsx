@@ -47,11 +47,11 @@ export default function List(props) {
         }
     };
 
-    useEffect(() => {
-        if (movies.length > 0) {
-            createMovies(movies);
-        }
-    }, [movies]);
+    // useEffect(() => {
+    //     if (movies.length > 0) {
+    //         createMovies(movies);
+    //     }
+    // }, [movies]);
 
     // const getLocalMovieData = async (movie) => {
     //     let title = movie.title;
