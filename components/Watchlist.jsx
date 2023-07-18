@@ -1,31 +1,21 @@
 import MovieItem from "./MovieItem";
-import styles from "./styles/watchlist.module.css";
+import watchListSliderSettings from "@component/lib/data/watchListSliderSettings";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import sliderSettings from "@component/lib/data/sliderSettings";
 
-export default function Watchlist({ media }) {
+const Watchlist = ({ media }) => {
+    const sliderSettings = watchListSliderSettings(media.length);
+
     return (
-        <div>
-            {media.length > sliderSettings.slidesToShow ? (
-                <div className="listContainer">
-                    <Slider
-                        {...sliderSettings}
-                        infinite={media.length > sliderSettings.slidesToShow}
-                    >
-                        {media.map((item, index) => (
-                            <MovieItem key={item.id} {...item} />
-                        ))}
-                    </Slider>
-                </div>
-            ) : (
-                <div className="listContainer2">
-                    {media.map((item, index) => (
-                        <MovieItem key={item.id} {...item} />
-                    ))}
-                </div>
-            )}
+        <div className="listContainer">
+            <Slider {...sliderSettings}>
+                {media.map((item, index) => (
+                    <MovieItem key={item.id} {...item} />
+                ))}
+            </Slider>
         </div>
     );
-}
+};
+
+export default Watchlist;

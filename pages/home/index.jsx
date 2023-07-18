@@ -2,9 +2,12 @@ import Layout from "../../components/Layout";
 import List from "../../components/List";
 import movieList from "@component/lib/data/movieList";
 import styles from "./styles/home.module.css";
+import { useUser } from "@component/util/context/UserContext";
 
 // route -> /home
 export default function Home({ mediaType, togglemediatype }) {
+    const { user } = useUser();
+    console.log(user);
     return (
         <Layout>
             <div className="container">

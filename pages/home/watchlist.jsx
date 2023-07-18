@@ -41,6 +41,8 @@ export default function WatchlistPage() {
         if (watchlist) populate();
     }, [watchlist]);
     const mediaTypes = ["Movies", "Series"];
+    console.log(movies);
+    console.log(tv);
     return (
         <Layout>
             <div className="container">

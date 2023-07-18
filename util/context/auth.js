@@ -8,6 +8,7 @@ export const getTokenFromLocalCookie = (cookies) => {
 // retrieves the user data using the jwt token from local cookies.
 export const getUserFromLocalCookie = async (cookies) => {
     const jwt = cookies.jwt;
+    console.log(jwt);
     if (jwt) {
         console.log("JWT token in getUserFromLocalCookie:", jwt);
         try {
@@ -19,6 +20,7 @@ export const getUserFromLocalCookie = async (cookies) => {
             });
 
             const data = response.data;
+            console.log(data);
 
             if (data.error) {
                 console.error(data.error);
