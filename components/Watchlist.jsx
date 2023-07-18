@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const Watchlist = ({ media }) => {
+    // Need specific slider settings as the slider will only render a row if theres more slider components than per row.
     const sliderSettings = watchListSliderSettings(media.length);
 
     return (

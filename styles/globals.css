@@ -463,8 +463,19 @@ span.error:after {
   border-radius: 50%;
 }
 
-.slick-prev {
-  background: black;
+.slick-prev,
+.slick-next {
+  color: transparent !important;
+  font-size: 30px !important;
+
+  background-color: white !important;
+
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black !important;
+  font-size: 30px !important;
 }
 
 @media (max-width: 1000px) {
