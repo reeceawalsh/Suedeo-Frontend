@@ -32,26 +32,49 @@ export default function List(props) {
         };
     };
 
+    // // Send movies in batches
+    // const createMovies = async (movies) => {
+    //     const movieData = movies.map(prepareMovieData);
+    //     try {
+    //         await axios.post(
+    //             `${process.env.BACKEND_URL}/movies/batch`,
+    //             {
+    //                 data: {
+    //                     movieData,
+    //                 },
+    //             },
+    //             {
+    //                 headers: {
+    //                     Authorization: `Bearer ${process.env.ADMIN_TOKEN}`,
+    //                     "Content-Type": "application/json",
+    //                 },
+    //             }
+    //         );
+    //     } catch (error) {
+    //         console.error("Failed to create movies:", error);
+    //     }
+    // };
+
     // Send movies in batches
     const createMovies = async (movies) => {
         const movieData = movies.map(prepareMovieData);
-
         try {
-            await axios.post("/api/movies", movieData, {
-                headers: {
-                    "Content-Type": "application/json",
+            await axios.post(`api/movies`, {
+                data: {
+                    movieData,
                 },
             });
         } catch (error) {
             console.error("Failed to create movies:", error);
         }
+        localStorage.setItem("addedMovies", true);
     };
 
-    // useEffect(() => {
-    //     if (movies.length > 0) {
-    //         createMovies(movies);
-    //     }
-    // }, [movies]);
+    useEffect(() => {
+        if (movies.length > 0 && !localStorage.getItem("addedMovies")) {
+            createMovies(movies);
+        }
+    }, [movies]);
 
     // const getLocalMovieData = async (movie) => {
     //     let title = movie.title;

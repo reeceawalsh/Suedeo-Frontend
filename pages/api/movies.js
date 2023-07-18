@@ -1,15 +1,14 @@
+import axios from "axios";
+
 export default async function handler(req, res) {
     if (req.method === "POST") {
-        const { tmdb_id, title, type } = req.query;
-
+        const movieData = req.body.data.movieData;
         try {
             const response = await axios.post(
                 `${process.env.BACKEND_URL}/movies/batch`,
                 {
                     data: {
-                        tmdb_id,
-                        title,
-                        type,
+                        movieData,
                     },
                 },
                 {
@@ -22,8 +21,9 @@ export default async function handler(req, res) {
 
             res.status(200).json(response.data);
         } catch (error) {
+            console.error("Error in handler:", error);
             res.status(500).json({
-                // error: "An error occurred whilst adding a movie.",
+                error: "An error occurred whilst adding movies.",
             });
         }
     } else {
