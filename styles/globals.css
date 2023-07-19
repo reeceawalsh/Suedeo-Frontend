@@ -167,12 +167,14 @@ input:active {
 
 .liked {
   position: relative;
+  cursor: pointer;
   color: rgba(246, 242, 83, 1);
 }
 
 .disliked {
   position: relative;
   color: red;
+  cursor: pointer;
 }
 
 .thumb-up:hover {
@@ -511,7 +513,6 @@ span.error:after {
 
   .liked {
     position: relative;
-
     color: rgba(246, 242, 83, 1);
   }
 
