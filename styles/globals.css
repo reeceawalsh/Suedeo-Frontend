@@ -374,7 +374,7 @@ span.error:after {
 }
 
 .listContainer {
-  margin: 0 1rem;
+  margin: 0 1.5rem 0 1rem;
 }
 
 .listContainer2 {
@@ -463,19 +463,27 @@ span.error:after {
   border-radius: 50%;
 }
 
+.slick-prev {
+  left: -30px !important;
+}
+
+.slick-next {
+  right: -30px !important;
+}
+
 .slick-prev,
 .slick-next {
   color: transparent !important;
-  font-size: 30px !important;
-
-  background-color: white !important;
+  background-color: transparent !important;
 
 }
 
 .slick-prev:before,
 .slick-next:before {
-  color: black !important;
+  color: white !important;
   font-size: 30px !important;
+  border-radius: 50%;
+  background-color: black !important;
 }
 
 @media (max-width: 1000px) {
@@ -514,7 +522,7 @@ span.error:after {
   }
 
   .listContainer {
-    margin: 0 0.5rem;
+    margin: 0 0.5rem 0 0.5rem;
   }
 
   /* Buttons */
