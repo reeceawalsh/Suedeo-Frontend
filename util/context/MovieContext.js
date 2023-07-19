@@ -24,7 +24,7 @@ export function MovieProvider({ children }) {
     const [dislikedMovies, setDislikedMovies] = useState([]);
     const [watchlist, setWatchlist] = useState([]);
     const { user } = useUser(); // Get the current user from User context
-    const [cookies, setCookie, removeCookie] = useCookies(["id"]); // Access the id cookie.
+    const [cookies] = useCookies(["id", "jwt"]); // Access cookies
 
     // When the jwt cookie changes (i.e. the user changes), fetch the movies that the user likes, dislikes, and watches.
     useEffect(() => {
