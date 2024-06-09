@@ -31,30 +31,6 @@ export default function List(props) {
             type: mediaType,
         };
     };
-
-    // // Send movies in batches
-    // const createMovies = async (movies) => {
-    //     const movieData = movies.map(prepareMovieData);
-    //     try {
-    //         await axios.post(
-    //             `${process.env.BACKEND_URL}/movies/batch`,
-    //             {
-    //                 data: {
-    //                     movieData,
-    //                 },
-    //             },
-    //             {
-    //                 headers: {
-    //                     Authorization: `Bearer ${process.env.ADMIN_TOKEN}`,
-    //                     "Content-Type": "application/json",
-    //                 },
-    //             }
-    //         );
-    //     } catch (error) {
-    //         console.error("Failed to create movies:", error);
-    //     }
-    // };
-
     // Send movies in batches
     const createMovies = async (movies) => {
         const movieData = movies.map(prepareMovieData);
@@ -102,19 +78,23 @@ export default function List(props) {
             });
     };
 
-    const loadPages = () => {
-        for (let i = 2; i < 10; i++) {
-            axios
-                .get(
-                    `/api/fetchMovies?mediaType=${mediaType}&provider=${provider}&page=${i}`
-                )
-                .then((response) => {
-                    setMovies((prev) => [...prev, ...response.data.results]);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
+    const loadPages = async () => {
+        let currentPage = 1;
+        let fetchedMovies = [];
+        while (fetchedMovies.length < 180) {
+            try {
+                const response = await axios.get(
+                    `/api/fetchMovies?mediaType=${mediaType}&provider=${provider}&page=${currentPage}`
+                );
+                fetchedMovies = [...fetchedMovies, ...response.data.results];
+                currentPage++;
+                if (response.data.results.length === 0) break;
+            } catch (err) {
+                console.log("Error fetching page:", currentPage, err);
+                break;
+            }
         }
+        setMovies(fetchedMovies.slice(0, 180));
     };
 
     // useEffect(() => {
