@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
                 <MovieProvider>
                     <MediaTypeProvider>
                         <Head>
-                            <title>Suedeo Movies</title>
+                            <title>Suedeo</title>
                             <meta
                                 name="viewport"
                                 content="width=device-width, initial-scale=1"

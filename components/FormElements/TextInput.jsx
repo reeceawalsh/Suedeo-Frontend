@@ -6,7 +6,7 @@ const TextInput = (props) => {
                 {props.error}
             </span>
             <div className="form-sub-group">
-                <label>{props.label}:</label>
+                <label>{props.label}</label>
                 <input
                     type="text"
                     name={props.name}

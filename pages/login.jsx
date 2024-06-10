@@ -16,9 +16,11 @@ export default function LoginPage() {
     }, [user, router]);
     return (
         <div className="page">
-            <div className="fakeHeader">
-                <Image className="logo" src={logo} alt="Suedeo Logo" />
-                {/* <h1 className="fakeHeaderTitle">Welcome Back</h1> */}
+            <div className="authHeader">
+                <Image className="authLogo" src={logo} alt="Suedeo Logo" />
+                <Link href="/home" className="link">
+                    Skip
+                </Link>
             </div>
             <LoginContainer />
         </div>

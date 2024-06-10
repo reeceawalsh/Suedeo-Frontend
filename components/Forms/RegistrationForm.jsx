@@ -2,6 +2,7 @@ import PasswordInput from "../FormElements/PasswordInput";
 import TextInput from "../FormElements/TextInput";
 import DateInput from "../FormElements/DateInput";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 // registration form used by the register component
@@ -11,7 +12,6 @@ export default function RegistrationForm({
     registrationData,
     errors,
     handleRegister,
-    alreadyRegistered,
     validRegistration,
 }) {
     const [startDate, setStartDate] = useState(
@@ -22,10 +22,7 @@ export default function RegistrationForm({
     return (
         <div className={styles.registrationForm} data-testid="register-form">
             <form>
-                <Link className={`${styles.skip} yellow`} href="/home">
-                    Skip
-                </Link>
-                <TextInput
+                {/* <TextInput
                     className={styles.username}
                     name="Username"
                     type="text"
@@ -40,7 +37,7 @@ export default function RegistrationForm({
                             username: event.target.value,
                         })
                     }
-                />
+                /> */}
                 <TextInput
                     className={styles.email}
                     name="Email"
@@ -57,57 +54,14 @@ export default function RegistrationForm({
                         })
                     }
                 />
-                {alreadyRegistered && (
-                    <div>
-                        <p>
-                            An account with this email address already exists.
-                        </p>
-                    </div>
-                )}
-                <DateInput
-                    selected={startDate}
-                    name="Date"
-                    label="Date of Birth"
-                    value={registrationData.dateOfBirth}
-                    error={errors.dateOfBirth}
-                    onChange={(date) => {
-                        setStartDate(date);
-                        let formattedDate = "";
-                        if (date) {
-                            formattedDate = date.toISOString().substring(0, 10);
-                        }
-                        setRegistrationData({
-                            ...registrationData,
-                            dateOfBirth: formattedDate,
-                        });
-                    }}
-                />
-                <PasswordInput
-                    className={styles.password}
-                    name="Password"
-                    label="Password"
-                    placeholder="Password"
-                    value={registrationData.password}
-                    error={errors.password}
-                    autoComplete="no"
-                    onChange={(event) =>
-                        setRegistrationData({
-                            ...registrationData,
-                            password: event.target.value,
-                        })
-                    }
-                />
                 <div className="btns">
                     <button
                         className="btn"
                         onClick={handleRegister}
                         data-testid="create-account-button"
                     >
-                        Create Account
+                        Next
                     </button>
-                    <Link className="btn" href="/login">
-                        Login
-                    </Link>
                 </div>
                 {!validRegistration && (
                     <p className="error error-message">

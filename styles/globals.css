@@ -27,7 +27,7 @@ body {
   background: linear-gradient(to bottom,
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
-  font-family: 'Montserrat', sans-serif;
+  font-family: sans-serif;
   background-color: rgb(243 244 246);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -87,10 +87,13 @@ label {
 
 /* Links */
 .link {
-  font-size: 2rem;
-  margin-top: 2rem;
-  padding: 1rem;
-  border-radius: 5px;
+  font-size: 1.3rem;
+  margin-right: 2rem;
+  font-weight: 600;
+}
+
+.link:hover {
+  text-decoration: underline;
 }
 
 .active-link {
@@ -206,7 +209,6 @@ input:active {
   padding: 1rem 2rem;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
-  margin: 0 0.3rem;
 }
 
 .btn:hover,
@@ -223,6 +225,7 @@ input:active {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  margin-top: 0.5rem;
 }
 
 /** Forms **/
@@ -445,15 +448,21 @@ span.error:after {
   width: 25rem;
 }
 
-.fakeHeader {
-  background-color: rgb(245, 245, 8);
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+.authLogo {
+  height: auto;
+  width: 20rem;
 }
 
-.fakeHeaderTitle {
-  margin-left: 5rem;
+.authHeader {
+  background-color: rgb(245, 245, 8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px rgb(197, 196, 196) solid;
+}
+
+.authHeaderLink {
+  margin-right: 5rem;
 }
 
 .slick-slider {
@@ -489,13 +498,13 @@ span.error:after {
 }
 
 @media (max-width: 1000px) {
-  .fakeHeaderTitle {
+  .authHeaderTitle {
     font-size: 2em;
   }
 }
 
 @media (max-width: 840px) {
-  .fakeHeaderTitle {
+  .authHeaderTitle {
     display: none;
   }
 

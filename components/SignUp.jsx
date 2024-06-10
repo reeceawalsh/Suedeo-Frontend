@@ -83,16 +83,14 @@ const SignUp = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.subContainer}>
-                <RegistrationForm
-                    styles={styles}
-                    setRegistrationData={setRegistrationData}
-                    registrationData={registrationData}
-                    errors={errors}
-                    handleRegister={handleRegister}
-                    validRegistration={validRegistration}
-                />
-            </div>
+            <RegistrationForm
+                styles={styles}
+                setRegistrationData={setRegistrationData}
+                registrationData={registrationData}
+                errors={errors}
+                handleRegister={handleRegister}
+                validRegistration={validRegistration}
+            />
         </div>
     );
 };

@@ -15,38 +15,36 @@ export default function LandingPage() {
     }, [user, router]);
     return (
         <div className={styles.container}>
+            <button
+                className={styles.skip}
+                onClick={() => router.push("/home")}
+            >
+                Continue as Guest
+            </button>
             <div className={styles.subContainer}>
-                <div className={styles.content}>
-                    <Link className={`${styles.skip} yellow`} href="/home">
-                        Continue as guest
+                <h1 className={styles.title}>
+                    Welcome to <span className="yellow">Suedeo</span>
+                </h1>
+                <h2 className={styles.subtitle}>
+                    Sign Up For <span className="yellow">Tailored</span> Movie
+                    Recommendations
+                </h2>
+                <p className={styles.desc}>
+                    Tired of browsing through hundreds of TV Shows and Movies?
+                    We deliver the best and latest recommendations for you. Grab
+                    your popcorn and{" "}
+                    <Link href="/signup" className={`yellow ${styles.link}`}>
+                        sign up for free
+                    </Link>{" "}
+                    today!
+                </p>
+                <div>
+                    <Link href="/signup">
+                        <button className="btn">Sign up!</button>
                     </Link>
-                    <h1 className={styles.title}>
-                        Welcome to <span className="yellow">Suedeo</span>
-                    </h1>
-                    <h2 className={styles.subtitle}>
-                        Sign Up For {""}
-                        <span className="yellow">Tailored</span> Movie
-                        Recommendations
-                    </h2>
-                    <h3 className={styles.desc}>
-                        Tired of having to browse through hundreds of TV Shows
-                        and Movies on multiple streaming platforms? We deliver
-                        the best and latest{" "}
-                        <span className="yellow">TV and Film</span>{" "}
-                        recommendations that are currently available on the
-                        platforms of your choice. Choose movies that you love,
-                        or hate, in order to give us the best chance of
-                        providing a perfect match for you. Grab your popcorn and{" "}
-                        <span className="yellow">sign up for free</span> today!
-                    </h3>
-                    <div className="btns">
-                        <Link href="/signup">
-                            <button className="btn">Sign up!</button>
-                        </Link>
-                        <Link href="/login">
-                            <button className="btn">Login</button>
-                        </Link>
-                    </div>
+                    <Link href="/login">
+                        <button className="btn">Login</button>
+                    </Link>
                 </div>
             </div>
         </div>

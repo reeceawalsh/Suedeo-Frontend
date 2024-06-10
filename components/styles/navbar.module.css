@@ -28,12 +28,12 @@
   border: none;
   cursor: pointer;
   height: 3rem;
-  min-width: 10rem;
+  min-width: 6rem;
   color: black;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   font-weight: 400;
 }
 
@@ -43,7 +43,7 @@
 
 .logo {
   height: auto;
-  width: 20vw;
+  width: 15vw;
   border-right: 2px solid black;
 }
 
@@ -61,7 +61,7 @@
   align-items: center;
   justify-content: space-between;
   font-size: 1.1rem;
-  width: 80vw;
+  width: 85vw;
 }
 
 .icon {
