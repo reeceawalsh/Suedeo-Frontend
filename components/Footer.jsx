@@ -8,13 +8,7 @@ import Image from "next/image";
 const Footer = () => {
     return (
         <footer className={styles.footer}>
-            <a
-                href="https://github.com/reeceawalsh/Suedeo-Frontend"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <span className="white-font">Suedeo &copy; 2024</span>
-            </a>
+            <span className="white-font">Suedeo &copy; 2025</span>
             <div>
                 {/* <a
                     href="https://github.com/reeceawalsh/Suedeo-Frontend"
