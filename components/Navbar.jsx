@@ -71,7 +71,7 @@ const Navbar = () => {
                         </Link>
                     )}
                 </div>
-                {!user ? (
+                {/* {!user ? (
                     <div className={styles.userLinks}>
                         <Link className={styles.navBarLink} href="/signup">
                             Sign Up
@@ -84,7 +84,7 @@ const Navbar = () => {
                     <div className={styles.userLinks}>
                         {/* <span className={styles.userName}>
                                 Logged in as: {user.username}
-                            </span> */}
+                            </span> 
                         <span
                             className={styles.navBarLink}
                             onClick={handleLogout}
@@ -93,7 +93,7 @@ const Navbar = () => {
                         </span>
                     </div>
                 )}
-                {/* <TextField
+                 <TextField
                         id="search"
                         label="Search"
                         size="small"
